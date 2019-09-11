@@ -1,0 +1,3 @@
+$("#userName").on('input',function(){if($(this).val().length<=4){$(this).css("border-color","#FF0000");$('#btn_DangNhap').addClass("btn-info disabled");$("#error_name").text("*Tên đăng nhập ít nhất 6 ký tự");}
+else{$(this).css("border-color","#2eb82e");$('#btn_DangNhap').removeClass("btn-info disabled");$("#error_name").text("");}});$("#passWord").on('input',function(){if($(this).val().length==0){$(this).css("border-color","#FF0000");$('#btn_DangNhap').addClass("btn-info disabled");$("#error_pass").text("*Mật khẩu ít nhất 6 ký tự");}
+else{$(this).css("border-color","#2eb82e");$('#btn_DangNhap').removeClass("btn-info disabled");$("#error_pass").text("");}});

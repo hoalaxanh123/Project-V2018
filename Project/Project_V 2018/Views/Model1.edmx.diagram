@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e08b9916e18f417d9edd6dea61b83de5" Name="Diagram1" ZoomLevel="95">
+        <EntityTypeShape EntityType="Vuong_CTK39Model.CauHinhWeb" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vuong_CTK39Model.ChinhSua" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vuong_CTK39Model.ChiTietHoaDon" Width="1.5" PointX="8" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vuong_CTK39Model.CuaHang" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vuong_CTK39Model.FeedBack" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vuong_CTK39Model.GioHang" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vuong_CTK39Model.HoaDon" Width="1.5" PointX="5.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vuong_CTK39Model.LoaiHang" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vuong_CTK39Model.LoaiMenu" Width="1.5" PointX="6.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vuong_CTK39Model.LoaiSlide" Width="1.5" PointX="10.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vuong_CTK39Model.LoaiTinTuc" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vuong_CTK39Model.Log" Width="1.5" PointX="8.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vuong_CTK39Model.Menu" Width="1.5" PointX="10.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vuong_CTK39Model.NguoiDung" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vuong_CTK39Model.PhienDangNhap" Width="1.5" PointX="8" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vuong_CTK39Model.SanPham" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vuong_CTK39Model.Slider" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vuong_CTK39Model.sysdiagram" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vuong_CTK39Model.TagContent" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vuong_CTK39Model.Tag" Width="1.5" PointX="12.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vuong_CTK39Model.TaiKhanMXH" Width="1.5" PointX="12.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vuong_CTK39Model.TaiKhoanNganHang" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vuong_CTK39Model.TinTuc" Width="1.5" PointX="2.75" PointY="14.75" IsExpanded="true" />
+        <AssociationConnector Association="Vuong_CTK39Model.FK_ChiTietHoaDon_HoaDon" ManuallyRouted="false" />
+        <AssociationConnector Association="Vuong_CTK39Model.FK_SanPham_LoaiHang" ManuallyRouted="false" />
+        <AssociationConnector Association="Vuong_CTK39Model.FK_PhienDangNhap_NguoiDung" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

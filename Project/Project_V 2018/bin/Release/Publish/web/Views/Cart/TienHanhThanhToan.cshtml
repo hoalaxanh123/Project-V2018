@@ -1,0 +1,199 @@
+﻿
+@{
+    ViewBag.Title = "Tiến hành thanh toán";
+    Layout = null;
+}
+@Html.Partial("~/Views/Home/Head.cshtml")
+@Html.Action("Header_Partical", "Home")
+@Html.Action("SlideShow_Partical", "Home")
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Menus").addClass("hidden");
+        $("#slideshow").addClass("hidden");
+    })
+</script>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form id="regForm" method="post" action="TaoHoaDon">
+                <div class="cart-content ng-scope">
+                    @*<h1><span>Giỏ hàng của tôi</span></h1>*@
+                    <div class="steps clearfix">
+                        <ul class="clearfix">
+                            <li class="cart active col-md-2 col-xs-4 col-sm-4 col-md-offset-3 col-sm-offset-0 col-xs-offset-0"><span><i class="fas fa-cart-arrow-down"></i></span><span class="hidden-xs">Giỏ hàng của tôi</span></li>
+                            <li class="payment active col-md-2 col-xs-4 col-sm-4"><span><i class="fas fa-hand-holding-usd"></i></span><span class="hidden-xs">Thanh toán</span></li>
+                            <li class="finish col-md-2 col-xs-4 col-sm-4"><span><i class="fas fa-plane"></i></span><span class="hidden-xs">Hoàn tất</span></li>
+                        </ul>
+                    </div>
+
+                    <input type="text" style="display:none" name="TenDangNhap1" id="TenDangNhap1" />
+                    <script type="text/javascript">
+                        $("#TenDangNhap1").val($("#TenDangNhap").text());
+                    </script>
+                    <div class="center-block" style="max-width:880px">
+                        <h5 class="text-danger"><b id="TBao"></b></h5>
+                        <div class="tabz panel panel-default">
+                            <h4 class=" panel-heading" id="MauNen">I. Địa chỉ thanh toán và giao hàng</h4>
+                            <div class="step-preview clearfix panel-body">
+                                <h2 class="title">Thông tin thanh toán</h2>
+                                <div class="form-block ng-scope" ng-if="CustomerId<=0">
+                                    <!-- ngIf: CustomerId>0 -->
+                                    @{
+                                        MyClass s = new MyClass();
+                                        var tk = "";
+                                        if (Request.Cookies["LogSession"] != null)
+                                        {
+                                            tk = Request.Cookies["LogSession"].Value;
+                                        }
+                                        NguoiDung temp = s.TryToLogin(tk);
+                                        if (temp == null)
+                                        {
+                                            <div class="user-login text-danger"><b>Bạn không muốn nhập thông tin nhiều lần --> <button type="button" href="#" onclick="Login()" style="color:red;font-size:18px;background-color:transparent;border:0">Đăng nhập ngay</button></b> </div>
+                                            <br />
+                                            <div class="form-group"><label>Họ tên : </label><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" placeholder="Họ &amp; Tên" type="text" required="" name="HoTen" id="HoTen"></div>
+                                            <div class="form-group"><label>Số điện thoại : </label><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" placeholder="Số điện thoại" type="number" required="" name="SoDienThoai" id="SoDienThoai"></div>
+                                            <div class="form-group"><label>Email (tùy chọn) : </label><input class="form-control ng-pristine ng-untouched ng-valid-email ng-invalid ng-invalid-required" placeholder="Email" type="email" name="Email" id="Email"></div>
+                                            <div class="form-group"><label>Địa chỉ : </label><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" placeholder="Địa chỉ" type="text" required="" name="DiaChi" id="DiaChi"></div>
+                                            <label>Ghi chú ( tùy chọn ) : </label><textarea class="form-control ng-pristine ng-untouched ng-valid" rows="4" placeholder="Ghi chú đơn hàng" name="GhiChu"></textarea>
+                                        }
+                                        else
+                                        {
+                                            <br />
+                                            <div class="form-group"><label>Họ tên : </label><input value="@temp.TenThat" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" placeholder="Họ &amp; Tên" type="text" required="" name="HoTen" id="HoTen"></div>
+                                            <div class="form-group"><label>Số điện thoại : </label><input value="@temp.SoDienThoai" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" placeholder="Số điện thoại" type="text" required="" name="SoDienThoai" id="SoDienThoai"></div>
+                                            <div class="form-group"><label>Email (tùy chọn) : </label><input value="@temp.Email" class="form-control ng-pristine ng-untouched ng-valid-email ng-invalid ng-invalid-required" placeholder="Email" type="email" name="Email" id="Email"></div>
+                                            <div class="form-group"><label>Địa chỉ : </label><input value="@temp.DiaChi" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" placeholder="Địa chỉ" type="text" required="" name="DiaChi" id="DiaChi"></div>
+                                            <label>Ghi chú ( tùy chọn ) : </label><textarea class="form-control ng-pristine ng-untouched ng-valid" rows="4" placeholder="Ghi chú đơn hàng" name="GhiChu"></textarea>
+                                        }
+                                    }
+                                </div>
+
+                                <div class="form-block ng-scope " id="ThongTinDiaChiKhac">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tabz panel panel-default">
+                            <h4 class="panel-heading" id="MauNen">II. Thanh toán và vận chuyển</h4>
+                            <div class="step-preview clearfix panel-body">
+                                @*<h2 class="title">Cách thức thanh toán</h2>
+                                    <div class="form-group ">
+                                        <select class="form-control ng-pristine ng-untouched ng-valid" id="HinhThucThanhToan">
+                                            <option value="0">SHIP COD ( giao hàng tận nơi )</option>
+                                            <option value="1" selected>TRẢ TIỀN TRƯỚC</option>
+                                        </select>
+                                    </div>*@
+
+                                <h2 class="title">Hướng dẫn : </h2>
+                                <div id="Shipcode" class="hidden">
+                                    <h6>Với hình thức ship cod , chúng tôi có những quy định như sau : </h6>
+                                    <ul>
+                                        <li>-Khách hàng phải đặt cọc trước 5% tổng giá trị đơn hàng .</li>
+                                        <li>-Kiểm tra hàng trước khi trả tiền .</li>
+                                        <li>-Nhận hàng trả tiền .</li>
+                                        <li>-Free ship với đơn hàng > 1.000.000 VND .</li>
+                                    </ul>
+                                    <h6>Mọi thắc mắc xin liên hệ hotline để được giải đáp</h6>
+                                </div>
+                                <div id="TraTruoc" class="">
+                                    <h6> Khách hàng có thể chọn 1 trong những ngân hàng sau đây để tiến hành thanh toán : </h6>
+                                    <div id="DsTaiKhoanNganHang"></div>
+                                    <script type="text/javascript">
+                                            $(document).ready(function () {
+                                                  $.post('@Url.Action("DSTaiKhoan","BankAccount")', {}, function (data) {
+                                                        $("#DsTaiKhoanNganHang").html(data);
+                                                    });
+                                            });
+
+                                        $("#HinhThucThanhToan").change(function () {
+                                            if ($("#HinhThucThanhToan").val() == 0) {
+                                                $("#TraTruoc").addClass("hidden");
+                                                $("#Shipcode").removeClass("hidden");
+                                            }
+                                            else {
+                                                $("#TraTruoc").removeClass("hidden");
+                                                $("#Shipcode").addClass("hidden");
+                                            }
+                                        });
+                                    </script>
+                                    @*@Html.Action("DSTaiKhoan", "BankAccount");*@
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tabz panel panel-default">
+                            <h4 class="panel-heading" id="MauNen">III. Thông tin đơn hàng</h4>
+                            <div class="step-preview panel-body">
+                                <div class="cart-info table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr class="info">
+                                                <td><h6><b>STT</b></h6></td>
+                                                <td><h6><b>Tên SP</b></h6></td>
+                                                <td><h6><b>SL</b></h6></td>
+                                                <td><h6><b>T.Tiền</b></h6></td>
+                                            </tr>
+                                        </thead>
+
+                                        @using Project_V_2018.Models
+                                        @model List<GioHang>
+                                        @{
+                                            if (Model != null)
+                                            {
+                                                int stt = 0;
+                                                foreach (var item in Model)
+                                                {
+                                                    stt++;
+                                                    <tr>
+                                                        <td><h6>@stt</h6></td>
+                                                        <td><h6>@item.tenSanPham</h6></td>
+                                                        <td><h6>@item.SoLuong</h6></td>
+                                                        <td><h6>@item.ThanhTien.ToString("0,0", System.Globalization.CultureInfo.InvariantCulture)</h6></td>
+                                                    </tr>
+                                                }
+                                                <tr>
+                                                    <td></td>
+                                                    <td class="text-danger"><b>Tổng tiền</b></td>
+                                                    <td></td>
+                                                    <td class="text-danger"><b id="TongTienThanhToan"></b></td>
+                                                </tr>
+                                            }
+                                        }
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="overflow:auto;">
+                            <div style="float:right;">
+                                <button type="button" id="prevBtn" onclick="nextPrev(-1)" class="btn btn-primary">Quay lại</button>
+                                <button type="button" id="nextBtn" onclick="nextPrev(1)" class="btn btn-primary">Tiếp  tục</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script type="text/javascript">
+                        $("#nextBtn").click(function () {
+                            if ($("#HoTen").val() == "" || $("#SoDienThoai").val() == "" || $("#DiaChi").val() == "") {
+                                $("#TBao").text("Vui lòng nhập đầy đủ thông tin cần thiết ");
+                                alert("Vui lòng nhập đầy đủ thông tin cần thiết");
+                            }
+                            else {
+                                $("#TBao").text("");
+                            }
+                        });
+                    </script>
+                    <div style="text-align:center;margin-bottom:10px">
+                        <span class="step"><b>1</b></span>
+                        <span class="step"><b>2</b></span>
+                        <span class="step"><b>3</b></span>
+                    </div>
+                </div>
+            </form>
+            <script src="~/Content/StepByStep/StepByStep.js"></script>
+
+        </div>
+    </div>
+</div>
+@Html.Action("Footer_Partical", "Home")

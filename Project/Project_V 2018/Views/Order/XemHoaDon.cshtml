@@ -1,0 +1,102 @@
+﻿
+@{
+    Layout = null;
+}
+@Html.Partial("~/Views/Home/Head.cshtml")
+@Html.Action("Header_Partical", "Home")
+@Html.Action("SlideShow_Partical", "Home")
+@using Project_V_2018.Models
+@model HoaDon
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Menus").addClass("hidden");
+        $("#slideshow").addClass("hidden");
+    })
+</script>
+  <script src="~/Content/JS/Orders.js"></script>
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 panel panel-danger">
+                <h1><span class="panel-title"></span></h1>
+                <br />
+                <div class="steps clearfix">
+                    <ul class="clearfix">
+                        <li class="cart active col-md-2 col-xs-4 col-sm-4 col-md-offset-3 col-sm-offset-0 col-xs-offset-0"><span><i class="fas fa-cart-arrow-down"></i></span><span class="hidden-xs">Giỏ hàng của tôi</span></li>
+                        <li class="payment active col-md-2 col-xs-4 col-sm-4"><span><i class="fas fa-hand-holding-usd"></i></span><span class="hidden-xs">Thanh toán</span></li>
+                        <li class="finish active col-md-2 col-xs-4 col-sm-4"><span><i class="fas fa-plane"></i></span><span class="hidden-xs">Hoàn tất</span></li>
+                    </ul>
+                </div>
+                <div class="payment-end">
+                    <div class="">
+                        <div class="alert alert-success fade in">
+                            <i class="fa-fw fa fa-check"></i>
+                            <strong>Success! </strong>
+                            <span>Đơn hàng của bạn đã được mua thành công , chúc bạn có những phút giây thoải mái .</span>
+                        </div>
+                    </div>
+                    <div class="payment-order clearfix">
+
+                        <h3>Mã đơn hàng của bạn: <b id="MaDonHang">@Model.MaHD</b></h3>
+                        @{
+                            MyClass s = new MyClass();
+                            var tk = "";
+                            if (Request.Cookies["LogSession"] != null)
+                            {
+                                tk = Request.Cookies["LogSession"].Value;
+                            }
+                            NguoiDung temp_NguoiDung = s.TryToLogin(tk);
+
+                            //Có cookie mà vẫn éo login được --> cookie fake -->xóa
+                            if (Request.Cookies["LogSession"] != null && temp_NguoiDung == null)
+                            {
+                                HttpCookie myCookie = new HttpCookie("LogSession");
+                                myCookie.Expires = DateTime.Now.AddDays(-1d);
+                                Response.Cookies.Add(myCookie);
+                            }
+
+                            if (temp_NguoiDung != null && temp_NguoiDung.PhanQuyen == 0)
+                            {
+                                <h1>Thông tin khách hàng</h1>
+                                <hr />
+                                <p><i><b>Họ và tên khách hàng </b> : @Model.NguoiTao</i></p>
+                                <p><i><b>Số điện thoại </b> : @Model.SDT</i></p>
+                                <p><i><b>Địa chỉ</b> : @Model.DiaChi</i></p>
+                                <p><i><b>Email </b> : @Model.Email</i></p>
+                                <p><i><b>Ghi chú </b> : @Model.GhiChu</i></p>
+                                if (Model.TrangThai == 0)
+                                {
+                                    <p><i><b>Trạng thái đơn hàng</b> : @MyClass.TrangThaiDonHang(Model.TrangThai)</i> </p>
+                                    <button class="btn btn-info" onclick="XacNhanDonHang(@Model.MaHD)">Xác nhận đơn hàng</button>
+                                }
+                                else
+                                {
+                                    <p><i><b>Trạng thái đơn hàng</b> : @MyClass.TrangThaiDonHang(Model.TrangThai)</i></p>
+                                }
+                                <h1>Thông tin đơn hàng</h1>
+                                <hr />
+                            }
+                        }
+                        <p><i><b>Ngày đặt:</b> @Model.NgayTao.ToString("dd/MM/yyyy HH:mm")</i></p>
+                        <p><i><b>Hình thức thanh toán</b> : @MyClass.PhuongThucThanhToan(Model.PhuongThucThanhToan.Value)</i></p>
+                        <h1>Thông tin đơn hàng</h1>
+                        <div id="DSCTHD"></div>
+                        <script type="text/javascript">
+                            $.post('@Url.Action("DanhSachCTHoaDon_Partial", "Order")', { MaHD: $("#MaDonHang").text() }, function (data) {
+                                $("#DSCTHD").html(data);
+                            });
+                        </script>
+                      
+                        <span class="print-order"><a href="#"><i class="fa fa-print"></i>In đơn hàng</a></span>
+                    </div>
+                    <div class="clearfix col-md-12">
+                        <div class="button text-right">
+                            <a class="btn btn-default" href="~/Home">Về trang chủ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Action("Footer_Partical", "Home")

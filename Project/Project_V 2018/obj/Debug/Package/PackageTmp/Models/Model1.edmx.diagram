@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e098636e0c1a4bf29aacdc5b93e5218f" Name="Diagram1">
+        <EntityTypeShape EntityType="QuanLyBuonBan_Entities1.CauHinhWeb" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBuonBan_Entities1.ChinhSua" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBuonBan_Entities1.ChiTietHoaDon" Width="1.5" PointX="8" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBuonBan_Entities1.CuaHang" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBuonBan_Entities1.FeedBack" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBuonBan_Entities1.GioHang" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBuonBan_Entities1.HoaDon" Width="1.5" PointX="5.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBuonBan_Entities1.LoaiHang" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBuonBan_Entities1.LoaiMenu" Width="1.5" PointX="6.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBuonBan_Entities1.LoaiSlide" Width="1.5" PointX="10.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBuonBan_Entities1.Menu" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBuonBan_Entities1.NguoiDung" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBuonBan_Entities1.PhienDangNhap" Width="1.5" PointX="8" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBuonBan_Entities1.SanPham" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBuonBan_Entities1.Slider" Width="1.5" PointX="8.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBuonBan_Entities1.sysdiagram" Width="1.5" PointX="10.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBuonBan_Entities1.TagContent" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBuonBan_Entities1.Tag" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBuonBan_Entities1.TaiKhanMXH" Width="1.5" PointX="12.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBuonBan_Entities1.TaiKhoanNganHang" Width="1.5" PointX="12.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBuonBan_Entities1.TinTuc" Width="1.5" PointX="12.75" PointY="12.75" IsExpanded="true" />
+        <AssociationConnector Association="QuanLyBuonBan_Entities1.FK_ChiTietHoaDon_HoaDon" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyBuonBan_Entities1.FK_SanPham_LoaiHang" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyBuonBan_Entities1.FK_PhienDangNhap_NguoiDung" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QuanLyBuonBan_Entities1.LoaiTinTuc" Width="1.5" PointX="3.375" PointY="14.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

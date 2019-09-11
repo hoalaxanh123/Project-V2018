@@ -1,0 +1,11 @@
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\tesst\bin\Debug\netcoreapp2.0\tesst.deps.json
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\tesst\bin\Debug\netcoreapp2.0\tesst.runtimeconfig.json
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\tesst\bin\Debug\netcoreapp2.0\tesst.runtimeconfig.dev.json
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\tesst\bin\Debug\netcoreapp2.0\tesst.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\tesst\bin\Debug\netcoreapp2.0\tesst.pdb
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\tesst\obj\Debug\netcoreapp2.0\tesst.csprojAssemblyReference.cache
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\tesst\obj\Debug\netcoreapp2.0\tesst.csproj.CoreCompileInputs.cache
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\tesst\obj\Debug\netcoreapp2.0\tesst.AssemblyInfoInputs.cache
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\tesst\obj\Debug\netcoreapp2.0\tesst.AssemblyInfo.cs
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\tesst\obj\Debug\netcoreapp2.0\tesst.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\tesst\obj\Debug\netcoreapp2.0\tesst.pdb

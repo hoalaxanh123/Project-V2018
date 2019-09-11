@@ -1,0 +1,67 @@
+﻿
+@{
+    Layout = null;
+}
+
+@using PagedList.Mvc
+@using Project_V_2018.Models
+@model PagedList.PagedList<SanPham>
+
+
+@{
+    if(Model.Count==0)
+    {
+        <h1 class="text-danger text-center">Hãy đón chờ, sản phẩm này sắp chuẩn bị ra mắt</h1>
+        <script>
+            $("#ThanhPhanTrang").addClass("hidden");
+            $("#TrangHienTai").addClass("hidden");
+            $("#TrangHienTaiContainer").addClass("hidden");
+        </script>
+    }
+
+    foreach (SanPham item in Model)
+    {
+        <div class="col-md-2 col-sm-2 col-xs-12 product-resize product-item-box" style="margin-top:1%">
+            <div class="product-item">
+                <div class="image image-resize">
+                    <a href="@Url.Action("ProductDetail_Partical","Products",new {@MaSP=item.MaSP })" title="Chi tiết sản phẩm @item.TenSP">
+                        <img alt="@item.TenSP" class="img-responsive" data-src="@item.HinhAnh" />
+                    </a>
+                    <span class="hot">Hot</span>
+                </div>
+                <div class="right-block">
+                    <h2 class="name">
+                        <a href="@Url.Action("ProductDetail_Partical","Products",new {@MaSP=item.MaSP })" title="Chi tiết sản phẩm @item.TenSP">@item.TenSP</a>
+                    </h2>
+                    <div class="rating">
+                        <div class="rating-1">
+                            <span class="rating-img">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <span class="price-new">@MyClass.ToVND(item.GiaGiam.Value)  VND</span>
+                    </div>
+                    <div class="button">
+                        <a href="@Url.Action("ProductDetail_Partical","Products",new {@MaSP=item.MaSP })" title="Mua sản phẩm này" class="btn btn-default btn-add-cart">Mua</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    };
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

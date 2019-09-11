@@ -1,0 +1,25 @@
+﻿@Html.Partial("~/Views/Home/Head.cshtml")
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>test</title>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+<body>
+    <form method="post" action="ThuNghiem">
+        <div class="g-recaptcha" data-sitekey="6LdPCGcUAAAAADuxGAxiMTia_3GqM8Ig7fyyTrW_" data-callback="Test"></div>
+        <input type="submit" id="btn" value="Submit" class="hidden"/>
+    </form>
+    <script>
+        function Test() {
+            $("#btn").removeClass("hidden");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+﻿<div class="myorder-content clearfix">
+    <h1 class="title"><span>Đơn hàng của tôi</span></h1>
+    <div class="myorder-block">
+        <div class="table-responsive clearfix myorder-info">
+            <table class="table table-mycart">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Mã đơn hàng</th>
+                        <th>Tên khách hàng</th>
+                        <th>Tổng tiền</th>
+                        <th>Tình trạng</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @using Project_V_2018.Models
+                    @{
+                        int stt = 0;
+                        foreach (HoaDon item in Model)
+                        {
+                            stt++;
+                            <tr>
+                                <td>@stt</td>
+                                <td>@item.MaHD</td>
+                                <td>@item.TenDangNhap</td>
+                                <td>@String.Format("{0:0,0 vnđ}", item.TongTien)</td>
+                                <td>@MyClass.TrangThaiDonHang(item.TrangThai)</td>
+                                <td class="text-center"><a href="~/Order/XemHoaDon?MaHD=@item.MaHD"><i class="fa fa-angle-double-right "></i>Xem đơn hàng</a></td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

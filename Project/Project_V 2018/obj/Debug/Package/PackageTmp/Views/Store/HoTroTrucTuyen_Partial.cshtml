@@ -1,0 +1,27 @@
+﻿@using Project_V_2018.Models
+@model List<TaiKhanMXH>
+<!--Begin-->
+<div class="box-support-online ng-scope">
+    <h3><span>Hỗ trợ trực tuyến</span></h3>
+    <div class="support-online-block">
+        <div class="support-hotline text-danger">
+            Hỗ trợ web<br><span class="ng-binding ">0167.552.8766</span>
+        </div>
+        <ul class="text-center">
+            <!-- ngIf: item.Skype!=''&&item.Skype!=null -->
+            @{
+                foreach (var item in Model)
+                {
+                    string link = "/Content/Images/Icons/" + @item.IconLink;
+                    <li>
+                        <img src="@link" width="25" />@item.Ten :
+                        @item.NoiDung
+                    </li>
+                }
+            }
+        </ul>
+        </div>
+    </div>
+<!--End-->
+<script type="text/javascript">
+</script>

@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Hướng dẫn thanh toán";
+}
+
+@Html.Partial("~/Views/Home/Head.cshtml")
+@Html.Action("Header_Partical", "Home")
+@Html.Action("SlideShow_Partical", "Home")
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Menus").addClass("hidden");
+        $("#slideshow").addClass("hidden");
+    })
+</script>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            @Html.Action("HoTroTrucTuyen_Partial", "Store")
+        </div>
+        <div class="col-md-9 panel panel-default" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size:15px">
+            <div class="page-option">
+                <h1 class="title panel-heading">
+                    <span>Hướng dẫn thanh toán</span>
+                </h1>
+                <div class="panel-body">
+                    <b>1.Ship cod ( chuyển phát tận nơi )</b><br />
+                    Hình thức này áp dụng cho khách hàng ở xa hoặc không tiện tới trực tiếp shop :
+                    <ul>
+                        <li class="Left">1.Khách hàng đặt hàng trên web hoặc gọi trực tiếp cho shop</li>
+                        <li class="Left">2.Nhân viên sẽ tư vấn cho khách hàng</li>
+                        <li class="Left">3.Nhân viên và khách hàng sẽ cùng đi tới quyết định cuối cùng</li>
+                        <li class="Left">
+                            4.Nhân viên xác nhận với khách hàng
+                        </li>
+                        <li class="Left">
+                            5.Khách hàng chuyển tiền cọc cho shop
+                        </li>
+                        <li class="Left">
+                            6.Nhân viên tiến hành đóng gói và vận chuyển
+                        </li>
+                        <li class="Left">
+                            7.Khách hàng nhận sản phẩm và trả tiền
+                        </li>
+                        <li class="Left">8.Kết thúc quá trình</li>
+                    </ul>
+
+                    <b>2.Trả tiền trước</b>
+                    <ul>
+                        Đây là hình thức mang lại sữ hữu hiệu đối với đơn hàng lớn và các chính sách khuyến mãi của cửa hàng :
+
+                        <li class="Left">1.Khách hàng đặt hàng trên web hoặc gọi trực tiếp cho shop</li>
+                        <li class="Left">2.Nhân viên sẽ tư vấn cho khách hàng</li>
+                        <li class="Left">3.Nhân viên và khách hàng sẽ cùng đi tới quyết định cuối cùng</li>
+                        <li class="Left">4.Nhân viên xác nhận với khách hàng</li>
+                        <li class="Left">
+                            5.Khách hàng toàn bộ tiền bằng giá trị sản phẩm cho shop qua
+                            <a href="~/Home/TaiKhoanGiaoDich" style="color:red"><b>tài khoản ngân hàng</b></a>
+                        </li>
+                        <li class="Left">6.Nhân viên tiến hành đóng gói sản phẩm và quà ( nếu có ) rồi tiến vận chuyển</li>
+                        <li class="Left">7.Khách hàng nhận sản phẩm</li>
+                        <li class="Left">8.Kết thúc quá trình</li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+@Html.Action("Footer_Partical", "Home")

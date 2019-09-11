@@ -1,0 +1,33 @@
+﻿@using Project_V_2018.Models
+
+    <div class="box-product-block " >
+        @{
+            foreach (SanPham item in Model)
+            {
+                <div class="item panel panel-info"style="margin-top:2%">
+                    <div class="image">
+                        <a href="@Url.Action("ProductDetail_Partical","Products",new {@MaSP=item.MaSP })" title="Chi tiết sản phẩm @item.TenSP">
+                            <img data-src="@item.HinhAnh" alt="@item.TenSP" class="img-responsive lazyload" />
+                        </a>
+                    </div>
+                    <div class="name">
+                        <a href="@Url.Action("ProductDetail_Partical","Products",new {@MaSP=item.MaSP })" title="Chi tiết sản phẩm @item.TenSP">@item.TenSP</a>
+                    </div>
+                    <div class="rating">
+                        <div class="rating-1">
+                            <span class="rating-img">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <span class="price-new">@MyClass.ToVND(item.GiaGiam.Value)  VND</span>
+                        <span class="price-old">@MyClass.ToVND(item.Gia.Value)  VND</span>
+                    </div>
+                    <div class="button text-center">
+                        <a class="btn btn-default btn-add-cart" href="@Url.Action("ProductDetail_Partical","Products",new {@MaSP=item.MaSP })">Mua</a>
+                    </div>
+                </div>
+                }
+            }
+            </div>
+

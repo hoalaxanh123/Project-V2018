@@ -1,0 +1,55 @@
+﻿@using Project_V_2018.Models
+@{
+    if (Model == null)
+    {
+        <div ng-if="Id>0" class="ng-scope">
+            <label class="text-danger" style="text-align:center">Không có hóa đơn nào có mã phù hợp</label>
+        </div>
+    }
+    else
+    {
+        <div ng-if="Id>0" class="ng-scope">
+            <h2>Thông tin đơn hàng</h2>
+            <div class="row-title docs">Đơn hàng của <a href="#" class="ng-binding">@Model.NguoiTao</a><b class="ng-binding"> </b> lúc <span class="grey ng-binding">@Model.NgayTao.ToString("dd/MM/yyyy HH:mm")</span></div>
+            <div class="table-responsive clearfix order-tracking-info">
+                <table class="table table-mycart">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã đơn hàng</th>
+                            <th>Tên khách hàng</th>
+                            <th>Tổng tiền</th>
+                            <th>Tình trạng</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @using Project_V_2018.Models
+                        @{
+                            HoaDon item = Model as HoaDon;
+                            <tr>
+                                <td>1</td>
+                                <td>@item.MaHD</td>
+                                <td>@item.NguoiTao</td>
+                                <td>@Model.TongTien.ToString("0,0", System.Globalization.CultureInfo.InvariantCulture) VND</td>
+                                @{
+                                    if (item.TrangThai == 0)
+                                    {
+                                        <td>Đang chờ xử lý</td>
+                                    }
+                                    else
+                                    {
+                                        <td>Đang vận chuyển</td>
+                                    }
+                                }
+                                <td class="text-center"><a href="~/Order/XemHoaDon?MaHD=@item.MaHD"><i class="fa fa-angle-double-right "></i>Xem đơn hàng</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    }
+}
+

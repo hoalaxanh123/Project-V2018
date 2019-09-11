@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Vuong_CTK39Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CauHinhWeb">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="Loai" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="GiaTri" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="TrangThai" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="ChinhSua">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NgaySua" Type="DateTime" Precision="3" />
+    <Property Name="NguoiSua" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ChiTietHoaDon">
+    <Key>
+      <PropertyRef Name="MaCTHD" />
+    </Key>
+    <Property Name="MaCTHD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaHD" Type="Int32" Nullable="false" />
+    <Property Name="TenSanPham" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SoLuong" Type="Int32" Nullable="false" />
+    <Property Name="GiaThanh" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="ThanhTien" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="DaXoa" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="HoaDon" Relationship="Self.FK_ChiTietHoaDon_HoaDon" FromRole="ChiTietHoaDon" ToRole="HoaDon" />
+  </EntityType>
+  <EntityType Name="CuaHang">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenCuaHang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SDT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HotLine" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Fax" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="LinkMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Website" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="FeedBack">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="TieuDe" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="GioHang">
+    <Key>
+      <PropertyRef Name="MaGioHang" />
+    </Key>
+    <Property Name="MaGioHang" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="maSanPham" Type="Int32" Nullable="false" />
+    <Property Name="tenSanPham" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DonGia" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="SoLuong" Type="Int32" Nullable="false" />
+    <Property Name="ThanhTien" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HoaDon">
+    <Key>
+      <PropertyRef Name="MaHD" />
+    </Key>
+    <Property Name="MaHD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NgayTao" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TrangThai" Type="Int32" Nullable="false" />
+    <Property Name="NguoiTao" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SDT" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DaXoa" Type="Boolean" Nullable="false" />
+    <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="PhuongThucThanhToan" Type="Int32" />
+    <Property Name="TongTien" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK_ChiTietHoaDon_HoaDon" FromRole="HoaDon" ToRole="ChiTietHoaDon" />
+  </EntityType>
+  <EntityType Name="LoaiHang">
+    <Key>
+      <PropertyRef Name="MaLoai" />
+    </Key>
+    <Property Name="MaLoai" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenLoai" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HinhAnh" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NoiBat" Type="Boolean" Nullable="false" />
+    <Property Name="TieuDeMeta" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="IDMenuCha" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="TieuDeSeo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="NgayTao" Type="DateTime" Precision="3" />
+    <Property Name="NguoiTao" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="TrangThai" Type="Boolean" />
+    <Property Name="HienThiTrenTrangChu" Type="Boolean" />
+    <Property Name="MetaKeyWord" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="MeTaDescription" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SanPhams" Relationship="Self.FK_SanPham_LoaiHang" FromRole="LoaiHang" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="LoaiMenu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenLoai" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="LoaiSlide">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="LoaiTinTuc">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HinhAnh" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NoiBat" Type="Boolean" Nullable="false" />
+    <Property Name="TieuDeMeta" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="IDMenuCha" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="TieuDeSeo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="NgayTao" Type="DateTime" Precision="3" />
+    <Property Name="NguoiTao" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="TrangThai" Type="Boolean" />
+    <Property Name="HienThiTrenTrangChu" Type="Boolean" />
+    <Property Name="MetaKeyWord" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="MeTaDescription" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TieuDe" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Text" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Link" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="ThuTu" Type="Int32" />
+    <Property Name="Target" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="LoaiMenu" Type="Int32" />
+  </EntityType>
+  <EntityType Name="NguoiDung">
+    <Key>
+      <PropertyRef Name="TenDangNhap" />
+    </Key>
+    <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MatKhau" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenThat" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GioiTinh" Type="Boolean" Nullable="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="SoDienThoai" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="NgaySinh" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DaXoa" Type="Boolean" Nullable="false" />
+    <Property Name="TrangThai" Type="Boolean" Nullable="false" />
+    <Property Name="NgayTao" Type="DateTime" Precision="3" />
+    <Property Name="PhanQuyen" Type="Int32" Nullable="false" />
+    <Property Name="SaltString" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PhienDangNhaps" Relationship="Self.FK_PhienDangNhap_NguoiDung" FromRole="NguoiDung" ToRole="PhienDangNhap" />
+  </EntityType>
+  <EntityType Name="PhienDangNhap">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Token" Type="String" MaxLength="550" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="ThoiGian" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DiaChiIP" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="NguoiDung" Relationship="Self.FK_PhienDangNhap_NguoiDung" FromRole="PhienDangNhap" ToRole="NguoiDung" />
+  </EntityType>
+  <EntityType Name="SanPham">
+    <Key>
+      <PropertyRef Name="MaSP" />
+    </Key>
+    <Property Name="MaSP" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaLoai" Type="Int64" Nullable="false" />
+    <Property Name="TenSP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Gia" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="GiaGiam" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="HinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HinhAnhThem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TrangThai" Type="Boolean" />
+    <Property Name="TonKho" Type="Int32" />
+    <Property Name="BanChay" Type="Boolean" />
+    <Property Name="Moi" Type="Boolean" />
+    <Property Name="Hot" Type="Boolean" />
+    <Property Name="KhuyenMai" Type="Boolean" />
+    <Property Name="ChiTietSanPham" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BaoHanh" Type="Int32" />
+    <Property Name="TopHot" Type="DateTime" Precision="3" />
+    <Property Name="DaCoVAT" Type="Boolean" />
+    <Property Name="TieuDeMeta" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="IDMenuCha" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="TieuDeSeo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="NgayTao" Type="DateTime" Precision="3" />
+    <Property Name="NguoiTao" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="HienThiTrenTrangChu" Type="Boolean" />
+    <Property Name="MetaKeyWord" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="MeTaDescription" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="SoLuotXem" Type="Int32" />
+    <NavigationProperty Name="LoaiHang" Relationship="Self.FK_SanPham_LoaiHang" FromRole="SanPham" ToRole="LoaiHang" />
+  </EntityType>
+  <EntityType Name="Slider">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HinhAnh" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ThuTu" Type="Int32" />
+    <Property Name="Link" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="NgayTao" Type="DateTime" Precision="3" />
+    <Property Name="NguoiTao" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TagContent">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="MaTinTuc" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaTinTuc" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tag">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TaiKhanMXH">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDung" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IconLink" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TaiKhoanNganHang">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NganHang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ChuTaiKhoan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SoTaiKhoan" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="ChiNhanh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TinTuc">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="MaLoaiTinTuC" Type="Int64" Nullable="false" />
+    <Property Name="TieuDe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TrangThai" Type="Boolean" />
+    <Property Name="Hot" Type="Boolean" />
+    <Property Name="KhuyenMai" Type="Boolean" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TopHot" Type="DateTime" Precision="3" />
+    <Property Name="TieuDeMeta" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="IDMenuCha" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="TieuDeSeo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="NgayTao" Type="DateTime" Precision="3" />
+    <Property Name="NguoiTao" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="HienThiTrenTrangChu" Type="Boolean" />
+    <Property Name="MetaKeyWord" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="MeTaDescription" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="SoLuotXem" Type="Int32" />
+    <Property Name="Tags" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_ChiTietHoaDon_HoaDon">
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
+    <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HoaDon">
+        <PropertyRef Name="MaHD" />
+      </Principal>
+      <Dependent Role="ChiTietHoaDon">
+        <PropertyRef Name="MaHD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SanPham_LoaiHang">
+    <End Role="LoaiHang" Type="Self.LoaiHang" Multiplicity="1" />
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiHang">
+        <PropertyRef Name="MaLoai" />
+      </Principal>
+      <Dependent Role="SanPham">
+        <PropertyRef Name="MaLoai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhienDangNhap_NguoiDung">
+    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="1" />
+    <End Role="PhienDangNhap" Type="Self.PhienDangNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiDung">
+        <PropertyRef Name="TenDangNhap" />
+      </Principal>
+      <Dependent Role="PhienDangNhap">
+        <PropertyRef Name="TenDangNhap" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Vuong_CTK39Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CauHinhWebs" EntityType="Self.CauHinhWeb" />
+    <EntitySet Name="ChinhSuas" EntityType="Self.ChinhSua" />
+    <EntitySet Name="ChiTietHoaDons" EntityType="Self.ChiTietHoaDon" />
+    <EntitySet Name="CuaHangs" EntityType="Self.CuaHang" />
+    <EntitySet Name="FeedBacks" EntityType="Self.FeedBack" />
+    <EntitySet Name="GioHangs" EntityType="Self.GioHang" />
+    <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
+    <EntitySet Name="LoaiHangs" EntityType="Self.LoaiHang" />
+    <EntitySet Name="LoaiMenus" EntityType="Self.LoaiMenu" />
+    <EntitySet Name="LoaiSlides" EntityType="Self.LoaiSlide" />
+    <EntitySet Name="LoaiTinTucs" EntityType="Self.LoaiTinTuc" />
+    <EntitySet Name="Logs" EntityType="Self.Log" />
+    <EntitySet Name="Menus" EntityType="Self.Menu" />
+    <EntitySet Name="NguoiDungs" EntityType="Self.NguoiDung" />
+    <EntitySet Name="PhienDangNhaps" EntityType="Self.PhienDangNhap" />
+    <EntitySet Name="SanPhams" EntityType="Self.SanPham" />
+    <EntitySet Name="Sliders" EntityType="Self.Slider" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TagContents" EntityType="Self.TagContent" />
+    <EntitySet Name="Tags" EntityType="Self.Tag" />
+    <EntitySet Name="TaiKhanMXHs" EntityType="Self.TaiKhanMXH" />
+    <EntitySet Name="TaiKhoanNganHangs" EntityType="Self.TaiKhoanNganHang" />
+    <EntitySet Name="TinTucs" EntityType="Self.TinTuc" />
+    <AssociationSet Name="FK_ChiTietHoaDon_HoaDon" Association="Self.FK_ChiTietHoaDon_HoaDon">
+      <End Role="HoaDon" EntitySet="HoaDons" />
+      <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SanPham_LoaiHang" Association="Self.FK_SanPham_LoaiHang">
+      <End Role="LoaiHang" EntitySet="LoaiHangs" />
+      <End Role="SanPham" EntitySet="SanPhams" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhienDangNhap_NguoiDung" Association="Self.FK_PhienDangNhap_NguoiDung">
+      <End Role="NguoiDung" EntitySet="NguoiDungs" />
+      <End Role="PhienDangNhap" EntitySet="PhienDangNhaps" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

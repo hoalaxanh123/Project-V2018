@@ -1,0 +1,43 @@
+﻿@using Project_V_2018.Models
+@model int
+<ul class="pagination">
+    <li>
+        <span aria-label="Previous" onclick="Lui()">
+            <span aria-hidden="true">&laquo;</span>
+        </span>
+    </li>
+    @{
+        for (int i = 1; i <= Model; i++)
+        {
+            <li><span href="#" onclick="LoadTheoTrang(@i)">@i</span></li>
+        }
+    }
+    <li>
+        <span aria-label="Next" onclick="Tien()">
+            <span aria-hidden="true">&raquo;</span>
+        </span>
+    </li>
+</ul>
+<script>
+    function LoadTheoTrang(trang) {
+        var gioiHan = $("#lblimit").val();
+        LoadDS(trang, gioiHan);
+        $("#TrangHienTai").text(trang);
+    }
+    function Lui() {
+        var TrangHienTai = Number($("#TrangHienTai").text());
+        if (TrangHienTai > 1)
+            TrangHienTai = TrangHienTai - 1;
+        var gioiHan = $("#lblimit").val();
+        LoadDS(TrangHienTai, gioiHan);
+        $("#TrangHienTai").text(TrangHienTai);
+    }
+    function Tien() {
+        var TrangHienTai = Number($("#TrangHienTai").text());
+        if (TrangHienTai<@Model)
+            TrangHienTai = TrangHienTai + 1;
+        var gioiHan = $("#lblimit").val();
+        LoadDS(TrangHienTai, gioiHan);
+        $("#TrangHienTai").text(TrangHienTai);
+    }
+</script>

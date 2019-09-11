@@ -1,0 +1,65 @@
+﻿<div class="change-password-content clearfix ng-scope">
+    <h1 class="title"><span>Thay đổi mật khẩu</span></h1>
+    <div class="col-md-8 col-md-offset-2 col-xs-12 col-sm-12 col-xs-offset-0 col-sm-offset-0">
+        <h5 class="text-danger" id="TB_DoiMatKhau"></h5>
+        <div class="form-group">
+            <label for="" class="col-sm-4 control-label">Mật khẩu cũ</label>
+            <div class="col-sm-8">
+                <input type="password" class="form-control " id="MKCU" required="required">
+                <label class="text-danger" id="error_MKCU"></label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-4 control-label">Mật khẩu mới</label>
+            <div class="col-sm-8">
+                <input type="password" class="form-control " id="MKMoi" required="required">
+                <label class="text-danger" id="error_MKMoi"></label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-4 control-label">Nhập lại mật khẩu</label>
+            <div class="col-sm-8">
+                <input type="password" class="form-control " id="XacNhanMKMoi" required="required">
+                <label class="text-danger" id="error_XacNhanMKMoi"></label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-4 control-label">Hành động : </label>
+            <div class="col-sm-8">
+                <select id="HanhDong" class="form-control">
+                    <option value="0" selected>Không làm gì cả</option>
+                    <option value="1">Đăng xuất khỏi tất cả các thiết bị khác</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8">
+                <button type="button" class="btn btn-default btn-info disabled" id="btn_DoiMK">Cập nhật</button>
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/JS/ChangePass.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $("#btn_DoiMK").click(function () {
+            var MKCU = $("#MKCU").val();
+            var MKMoi = $("#MKMoi").val();
+            var XacNhanMKMoi = $("#XacNhanMKMoi").val();
+            var HanhDong = $("#HanhDong").val();
+            $.ajax({
+                url: '@Url.Action("DoiMatKhauResult", "User")',
+                type: 'POST',
+                data: JSON.stringify({ 'MatKhau': MKCU, 'MatKhauDoi': XacNhanMKMoi, 'ThoatHet': HanhDong }),
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    $("#TB_DoiMatKhau").text(data)
+                    Mess(data);
+                },
+                error: function (something) {
+                   
+                }
+            });
+        });
+    </script>
+
+</div>

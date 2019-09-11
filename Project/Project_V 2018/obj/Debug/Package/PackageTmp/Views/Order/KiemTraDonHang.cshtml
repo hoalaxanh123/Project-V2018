@@ -1,0 +1,64 @@
+﻿
+@{
+    Layout = null;
+}
+@Html.Partial("~/Views/Home/Head.cshtml")
+@Html.Action("Header_Partical", "Home")
+@Html.Action("SlideShow_Partical", "Home")
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Menus").addClass("hidden");
+        $("#slideshow").addClass("hidden");
+    })
+</script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <script type="text/javascript">
+                $(".link-site-more").hover(function () { $(this).find(".s-c-n").show(); }, function () { $(this).find(".s-c-n").hide(); });
+            </script>
+            <div class="order-tracking-content clearfix ng-scope">
+                <h1 class="title"><span>Kiểm tra đơn hàng</span></h1>
+                <div class="order-tracking-block">
+                    <!-- ngIf: Id<0 -->
+                    <div class="form-inline order-input ng-pristine ng-invalid ng-invalid-required">
+                        <div class="form-group">
+                            <label>Nhập mã đơn hàng</label>
+                            <input type="text" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" placeholder="Mã số đơn hàng (VD: 123)" required="required" id="MaDonHang">
+                            <button class="btn btn-primary" id="btn_TimHD">Xem ngay</button>
+                            <br />
+                            <label class="text-danger" id="lb_Loi"></label>
+                            <br />
+                            <br />
+                            <label class="text-danger" id="lb_KQ"></label>
+                        </div>
+                    </div>
+                    <div id="KetQuaTimKiemHD">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $("#btn_TimHD").click(function () {
+        if ($("#MaDonHang").val() == "") {
+            $("#lb_Loi").text("Vui lòng không bỏ trống trường này");
+            return;
+        }
+        else
+            $("#lb_Loi").text("");
+        var maHD = $("#MaDonHang").val();
+        $.post('@Url.Action("TimHD_Partial", "Order")', { MaHD: maHD }, function (data) {
+            if (data == "")
+                $("#lb_KQ").text("Không có hóa đơn nào có mã " + maHD);
+            else
+                $("#lb_KQ").text("");
+            $("#KetQuaTimKiemHD").html(data);
+        });
+    });
+</script>
+@Html.Action("Footer_Partical", "Home")

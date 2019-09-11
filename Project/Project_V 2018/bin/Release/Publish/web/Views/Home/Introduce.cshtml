@@ -1,0 +1,29 @@
+﻿@Html.Partial("~/Views/Home/Head.cshtml")
+@Html.Action("Header_Partical", "Home")
+@Html.Action("SlideShow_Partical", "Home")
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Menus").addClass("hidden");
+        $("#slideshow").addClass("hidden");
+    })
+</script>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            @Html.Action("HoTroTrucTuyen_Partial", "Store")
+        </div>
+        <div class="col-md-9 panel panel-default" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size:18px">
+            @using Project_V_2018.Models;
+            @Html.Raw(Model.MoTa)
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+@Html.Action("Footer_Partical", "Home")

@@ -1,0 +1,348 @@
+﻿<i id="DauTrang" class="hidden"></i>
+<div class="header">
+    <section class="top-link clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    @* Hot line *@
+                    <div class="hidden-xs">  @Html.Action("HotLine_Header_Partical", "Store")</div>
+                    @* Load Header menu *@
+                    <ul class="nav navbar-nav navbar-right topmenu  hidden-xs hidden-sm">
+                        <li class="order-check"><a href='@Url.Action("KiemTraDonHang","Order",new {})'><i class="fas fa-clipboard-list"></i> Kiểm tra đơn hàng</a></li>
+                        <li class="order-cart"><a href='@Url.Action("GioHang","Cart",new {})'><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+                        @{
+                            MyClass s = new MyClass();
+                            var tk = "";
+                            if (Request.Cookies["LogSession"] != null)
+                            {
+                                tk = Request.Cookies["LogSession"].Value;
+                            }
+                            NguoiDung temp_NguoiDung = s.TryToLogin(tk);
+
+                            //Có cookie mà vẫn éo login được --> cookie fake -->xóa
+                            if (Request.Cookies["LogSession"] != null && temp_NguoiDung == null)
+                            {
+                                HttpCookie myCookie = new HttpCookie("LogSession");
+                                myCookie.Expires = DateTime.Now.AddDays(-1d);
+                                Response.Cookies.Add(myCookie);
+                            }
+
+                            if (temp_NguoiDung == null)
+                            {
+                                <li class="account-login">
+                                    <button class="myButton_top" onclick="Login()">
+                                        <i class="fas fa-sign-in-alt"></i> Đăng nhập
+                                    </button>
+
+                                </li>
+                                <li class="account-register">
+                                    <a href='@Url.Action("Register","User",new {})' id="Btn_Register"><i class="fa fa-key"></i> Đăng ký </a>
+                                    <i id="TenDangNhap" style="display:none"></i>
+                                </li>
+                            }
+                            else
+                            {
+                                <li style="display:none"></li>
+                                <li class="account-login">
+                                    <a href="@Url.Action("QuanLyTaiKhoan","User",new {})" title="Quản lý tài khoản"><i class="fas fa-cogs"></i>Xin chào @temp_NguoiDung.TenThat</a>
+                                    <i id="TenDangNhap" style="display:none">@temp_NguoiDung.TenDangNhap</i>
+                                </li>
+                                if (temp_NguoiDung.PhanQuyen == 0)
+                                {
+                                    <li class="account-login"><a href="~/Admin/Home/"><i class="fas fa-toolbox"></i>Quản trị</a></li>
+                                }
+                                <li class="account-login">
+                                    <a href="@Url.Action("Logout","User",new { current=Request.Url.AbsoluteUri})" title="Đăng xuất"><i class="fas fa-sign-out-alt"></i>Thoát</a>
+                                    <i id="TenDangNhap" style="display:none">@temp_NguoiDung.TenDangNhap</i>
+                                </li>
+                            }
+                        }
+                    </ul>
+
+                    @* Login form *@
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header" style="padding:35px 50px;">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h1><span class="fas fa-users"></span>&nbsp; Đăng nhập</h1>
+                                </div>
+                                <div class="modal-body" style="padding:40px 50px;">
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <label class="text-danger " id="KetQuaDangNhap"></label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="usrname"><span class="fas fa-user-alt"></span> Username</label>
+                                            <input type="text" class="form-control" id="userName" placeholder="Nhập tên đăng nhập" required />
+                                            <span id="error_name" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="psw"><span class="fas fa-lock"></span> Password</label>
+                                            <input type="password" class="form-control" id="passWord" placeholder="Nhập mật khẩu" required />
+                                            <span id="error_pass" class="text-danger"></span>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" checked id="SaveMe"> Nhớ tài khoản
+                                            </label>
+                                        </div>
+                                        <button type="button" id="btn_DangNhap" class="btn btn-success btn-block" onclick="DangNhap()"><span class="fas fa-sign-in-alt"></span>&nbsp;Đăng nhập</button>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal"> <span class="fas fa-times"></span> Hủy</button>
+                                    <p>Bạn chưa có tài khoản ? <a href='@Url.Action("Register","User",new {})' style="color:red;font-size:15px">Đăng ký ngay</a></p>
+                                    <p>Quên <a href="#">Mật khẩu?</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        document.getElementById("myModal").addEventListener("keyup", function (event) {
+                            event.preventDefault();
+                            if (event.keyCode === 13) {
+                                document.getElementById("btn_DangNhap").click();
+                            }
+                        });
+                    </script>
+                    <script src="~/Content/JS/Validate_Login_User.js"></script>
+                    @* Menu Header Mobile *@
+                    <div class="show-mobile hidden-lg hidden-md">
+                        <div class="quick-user MenuMobile__">
+                            <div class="quickaccess-toggle">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <div class="inner-toggle">
+                                <ul class="login links">
+                                    @{
+                                        if (temp_NguoiDung == null)
+                                        {
+                                            <li class="account-login"><a style="color:black" href="#" onclick="Login()"><i class="fas fa-sign-in-alt"></i> Đăng nhập </a></li>
+                                            <li class="account-register">
+                                                <a href='@Url.Action("Register", "User", new { })' id="Btn_Register" style="color:black"><i class="fa fa-key"></i> Đăng ký </a>
+                                                <i id="TenDangNhap" style="display:none"></i>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li class="account-login">
+                                                <a href="~/User/QuanLyTaiKhoan" title="Quản lý tài khoản" style="color:black"><i class="fas fa-cogs"></i>Xin chào @temp_NguoiDung.TenThat</a>
+                                                <i id="TenDangNhap" style="display:none">@temp_NguoiDung.TenDangNhap</i>
+                                            </li>
+                                            if (temp_NguoiDung.PhanQuyen == 0)
+                                            {
+                                                <li class="account-login"><a href="~/Admin/Home/" style="color:black"><i class="fas fa-toolbox"></i>Quản trị</a></li>
+                                            }
+                                            <li class="account-login">
+                                                <a href="@Url.Action("Logout","User",new { current=Request.Url.AbsoluteUri})" title="Đăng xuất" style="color:black"><i class="fas fa-sign-out-alt"></i>Thoát</a>
+                                                <i id="TenDangNhap" style="display:none">@temp_NguoiDung.TenDangNhap</i>
+                                            </li>
+
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="quick-access MenuMobile__">
+                            <div class="quickaccess-toggle">
+                                <i class="fas fa-shopping-basket"></i>
+                            </div>
+                            <div class="inner-toggle">
+                                <ul class="links">
+                                    <li><a id="mobile-wishlist-total" href="@Url.Action("KiemTraDonHang","Order",new {})" class="wishlist" style="color:black"><i class="fas fa-clipboard-list"></i> Kiểm tra đơn hàng</a></li>
+                                    <li><a href='@Url.Action("GioHang","Cart",new {})' class="shoppingcart" style="color:black"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="quick-access MenuMobile__" style="">
+                            <div class="quickaccess-toggle">
+                                <i class="fa fa-list"></i>
+                            </div>
+                            <div class="inner-toggle">
+                                <ul class="links">
+                                    <li><a style="color:black" href='~/Home' title="Về trang chủ mật ong Tâm Phát"><i class="fas fa-home"></i>Trang chủ</a></li>
+                                    <li><a style="color:black" href='@Url.Action("Introduce","Home",new {})'><i class="fas fa-info-circle"></i>Giới thiệu</a></li>
+                                    <li><a style="color:black" href='http://fb.com/matongtamphat'><i class="fas fa-newspaper"></i>Tin tức</a></li>
+                                    <li><a style="color:black" href="@Url.Action("Info_Partical","Home",new {})"><i class="fas fa-comments"></i>Liên hệ</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="header-content clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-xs-12 col-sm-12 header-left text-center">
+                    <div class="logo">
+                        <a href="/" title="Mật ong Tâm Phát">
+                            @* Logo here *@
+                            @Html.Action("logo_Header_Partical", "Store")
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-9 col-xs-12 col-sm-12 header-right">
+                    <div class="sale-policy clearfix hidden-sm hidden-xs">
+                        <ul class="clearfix">
+                            <li class="shipping">
+                                <i class="fa fa-truck"></i><span>
+                                    Giao hàng miễn phí
+                                </span>
+                            </li>
+                            <li class="payment">
+                                <i class="fas fa-hand-holding-usd"></i><span>
+                                    Thanh toán linh hoạt
+                                </span>
+                            </li>
+                            <li class="return">
+                                <i class="fas fa-headset"></i><span>
+                                    Tư vấn nhiệt tình chu đáo
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="cart" style="margin-top:-10px">
+                        <div class="heading">
+                            <a href='@Url.Action("GioHang","Cart",new {})'>
+                                <span class="icon"><img src="~/Content/Images/Bag.gif" style="width:60px" /></span><span id="cart-total">
+                                    @* thông tin giỏ hàng *@
+                                    <b id="SoSP" class="text-danger"></b> SP - 
+                                    <b id="TongTien" ></b> VND
+                                </span><i class="fa fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            Reload();
+                        });
+                       
+                    </script>
+                    <div class="search hidden-sm hidden-xs">
+                        <div class="input-cat form-search clearfix">
+
+                            @using (Html.BeginForm("KetQuaTimKiem", "Home", new { }))
+                            {
+                                <div class="form-search-controls">
+                                    @Html.TextBox("txt_TimKiem","",htmlAttributes: new { @placeholder="Nhập vào dữ liệu tìm kiếm",@id = "txtsearch"})
+                                    <button class="btn btn-search" title="Search" type="submit" id="btnsearch" value="Search">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                    <div class="select-categories">
+                                        <select id="LoaiHangTimKiem" name="Loai">
+                                            <option value="-1" selected="selected">Tất cả</option>
+                                            @using Project_V_2018.Models
+                                            @{
+                                                foreach (LoaiHang item in Model)
+                                                {
+                                                    <option value="@item.MaLoai">@item.TenLoai</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+
+                                    <script type="text/javascript">
+                                        $("#btnsearch").click(function () {
+                                            SearchProduct();
+                                        });
+                                        $("#txtsearch").keydown(function (event) {
+                                            if (event.keyCode == 13) {
+                                                SearchProduct();
+                                            }
+                                        });
+                                        function SearchProduct() {
+                                            var key = $('#txtsearch').val();
+                                            if (key == '' || key == 'Nhập vào dữ liệu tìm kiếm...') {
+                                                $('#txtsearch').focus();
+                                                return;
+                                            }
+                                        }
+                                    </script>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="social-group">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="navigation-menu clearfix">
+        <div class="container">
+            <div class="menu-top">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="menu-cate menu-quick-select">
+                            <div class="menu-cate-title" onclick="Menu()" id="MenuButton">
+                                <span><i id="arrow" class="fa fa-th-list"></i><a href="#">Danh mục sản phẩm</a></span>
+                                <i class="fa fa-chevron-circle-down"></i>
+                            </div>
+                            <ul class="menu-cate-content Menu_SPMOI" id="Menus">
+                                <li>
+                                    @using Project_V_2018.Models
+                                    @{
+                                        foreach (LoaiHang item in Model)
+                                        {
+                                        <li>
+                                            <a href="@Url.Action("Products_LoadByCast_Partial","Products",new { @MaLoai = @item.MaLoai})" title="Xem các sản phẩm thuộc loại @item.MoTa">
+                                                <i class="icon-menu fa /Uploads/shop90/images/icon/i_catelogy_7-20x20_png_pagespeed_ce_kzOx8kw31-.png"></i>
+                                                @item.TenLoai<span class="arrow-menu"><i class="fa fa-chevron-right "></i></span>
+                                            </a>
+                                        </li>
+                                    }
+                                    }
+                                </ul>
+                                <script type="text/javascript">
+                                    $("#MenuButton").click(function () {
+                                        $("#Menus").toggleClass("hidden");
+                                        $("#slideshow").toggleClass("hidden");
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <div class="col-md-9 ">
+                            <nav class="navbar nav-menu">
+                                <nav class="hidden-xs hidden-sm">
+                                    <ul class='menu nav navbar-nav'>
+                                        <li class="level0"><a style="background:rgba(0,0,0,0)" href='~/Home' title="Về trang chủ mật ong Tâm Phát"><span>Trang chủ</span></a></li>
+                                        <li class="level0"><a style="background:rgba(0,0,0,0)" href='@Url.Action("Introduce","Home",new {})'><span>Giới thiệu</span></a></li>
+                                        <li class="level0"><a style="background:rgba(0,0,0,0)" href='http://fb.com/matongtamphat'><span>Tin tức</span></a></li>
+                                        <li class="level0"><a style="background:rgba(0,0,0,0)" href="@Url.Action("Info_Partical","Home",new {})"><span>Liên hệ</span></a></li>
+                                    </ul>
+                                </nav>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    @* Logout script *@
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var str = location.href.toLowerCase();
+            $("ul.menu li a").each(function () {
+                if (str.indexOf(this.href.toLowerCase()) >= 0) {
+                    $("ul.menu li").removeClass("active");
+                    $(this).parent().addClass("active");
+                }
+            });
+        });
+        //$(document).ajaxStart(function () {
+        //    waitingDialog.show();
+        //}).ajaxSuccess(function () {  
+        //    waitingDialog.hide();
+        //}).ajaxError(function () {
+        //    waitingDialog.hide();
+        //}).ajaxStop(function () {
+        //    waitingDialog.hide();
+        //});
+
+    </script>

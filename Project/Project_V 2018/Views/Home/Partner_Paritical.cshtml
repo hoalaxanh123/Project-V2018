@@ -1,0 +1,54 @@
+﻿@*<div class="partner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <link href="~/Content/source/app/new/owl.carousel.css" rel="stylesheet" />
+                <link href="~/Content/source/app/new/owl.theme.css" rel="stylesheet" />
+                <script src="~/Content/source/app/new/owl.carousel.min.js"></script>
+                <script src="~/Content/source/app/new/moduleServices.js"></script>
+                <script src="~/Content/source/app/new/moduleController.js"></script>
+                <!--Begin-->
+                <div class="partner-content owl-carousel" ng-controller="moduleController" ng-init="initPartnerController('Partners')">
+                    <h3 class="title">Đối tác</h3>
+                    <div class="partner-block">
+                        <div class="partner-item" ng-repeat="item in Partners">
+                            <a href="{{item.Link}}" target="_blank" title="{{item.Name}}">
+                                <img ng-src="{{item.Logo}}" data-original="{{item.Image}}" alt="{{item.Name}}" class="img-responsive lazy" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="boxprevnext">
+                        <a class="prev prevlogo"><i class="fa fa-angle-left"></i></a>
+                        <a class="next nextlogo"><i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                            $(document).ready(function () {
+                                var owl = $(".partner-block");
+                                owl.owlCarousel({
+                                    autoPlay: true,
+                                    autoPlay: 5000,
+                                    items: 6,
+                                    slideSpeed: 1000,
+                                    pagination: false,
+                                    itemsDesktop: [1200, 6],
+                                    itemsDesktopSmall: [980, 5],
+                                    itemsTablet: [767, 4],
+                                    itemsMobile: [480, 2]
+                                });
+                                $(".partner-content .nextlogo").click(function () {
+                                    owl.trigger('owl.next');
+                                });
+                                $(".partner-content .prevlogo").click(function () {
+                                    owl.trigger('owl.prev');
+                                });
+                            });
+                </script>
+                <!--End-->
+                <script type="text/javascript">
+                            window.Partners = [{ "Id": 1, "ShopId": 90, "Name": "Adv01", "Link": "#", "Logo": "/Uploads/shop90/images/product/guhi.jpg", "Index": 1, "Inactive": false }, { "Id": 7, "ShopId": 90, "Name": "Adv02", "Link": "#", "Logo": "/Uploads/shop90/images/product/canon.jpg", "Index": 2, "Inactive": false }, { "Id": 8, "ShopId": 90, "Name": "ads", "Link": "#", "Logo": "/Uploads/shop90/images/product/nikon.jpg", "Index": 3, "Inactive": false }, { "Id": 9, "ShopId": 90, "Name": "4ss", "Link": "#", "Logo": "/Uploads/shop90/images/product/burbery_2jrem8aiipohl_simg_603cef_226x114_maxb.png", "Index": 4, "Inactive": false }, { "Id": 10, "ShopId": 90, "Name": "dfa", "Link": "#", "Logo": "/Uploads/shop90/images/product/nikon(1).jpg", "Index": 5, "Inactive": false }];
+                </script>
+            </div>
+        </div>
+    </div>
+</div>*@

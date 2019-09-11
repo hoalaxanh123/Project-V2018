@@ -1,0 +1,2 @@
+function Logout(){var urlCurrent=window.location.href;if(urlCurrent.indexOf('#')>0)
+urlCurrent=urlCurrent.slice(0,-1);$.ajax({url:'/User/Logout',type:'POST',data:urlCurrent,contentType:'application/json; charset=utf-8',success:function(data){},error:function(){}});};

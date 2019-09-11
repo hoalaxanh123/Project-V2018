@@ -1,0 +1,21 @@
+﻿@Html.Partial("~/Views/Home/Head.cshtml")
+@Html.Action("Header_Partical", "Home")
+@Html.Partial("~/Views/Home/SlideShow_Partical.cshtml")
+@{
+    ViewBag.Title = "Lỗi";
+    Layout = "~/Views/Template/UserLayout.cshtml";
+}
+
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <br />
+                <h1 class="text-danger" style="text-align:center">Xin lỗi , có vẻ bạn đang bị lạc hoặc đường dẫn không còn tồn tại trên hệ thống</h1>
+                <a href="~/Home"><h1  style="text-align:center;color:red;"><u>-->Nhấn vào đây để trở về trang chủ<--</u></h1></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Action("Footer_Partical", "Home")

@@ -1,0 +1,92 @@
+﻿@using Project_V_2018.Models
+@model List<GioHang>
+
+@{
+
+    if (Model != null)
+    {
+        for (int i = 0; i < Model.Count; i++)
+        {
+            GioHang item = Model[i];
+            <tr class="ng-scope">
+                <td id="DS_MaSP" style="display:none">@item.maSanPham</td>
+                <td class="image">
+                    <a href="~/Products/ProductDetail_Partical?MaSP=@item.maSanPham"> <img src="@item.HinhAnh" class="img-responsive"></a>
+                </td>
+                <td class="des">
+                    <h2><a href="~/Products/ProductDetail_Partical?MaSP=@item.maSanPham" class="ng-binding" id="DS_TenSP">@item.tenSanPham</a></h2>
+                    <span class="ng-binding"></span>
+                </td>
+                <td class="price ng-binding">@item.DonGia.ToString("0,0", System.Globalization.CultureInfo.InvariantCulture) VND</td>
+                <td class="quantity">
+                    <input type="number" value="@item.SoLuong" class="text ng-pristine ng-untouched ng-valid" id="txt_DS_SoLuong" min="0"/>
+                </td>
+                <td>
+                    <input type="button" value="Cập nhập" class="btn btn-primary" id="btn_CatNhap" />
+                </td>
+                <td class="amount ng-binding">
+                    @item.ThanhTien.ToString("0,0", System.Globalization.CultureInfo.InvariantCulture) VND
+                </td>
+                <td>
+                    <input type="button" value="Xóa" class="btn btn-primary" id="btn_Xoa" />
+                </td>
+
+            </tr><!-- end ngRepeat: item in OrderDetails -->
+        }
+    }
+}
+<script type="text/javascript">
+
+    var number = document.getElementById('txt_DS_SoLuong');
+
+    // Listen for input event on numInput.
+    number.onkeydown = function (e) {
+        if (!((e.keyCode > 95 && e.keyCode < 106)
+            || (e.keyCode > 47 && e.keyCode < 58)
+            || e.keyCode == 8)) {
+            return false;
+        }
+    }
+
+
+
+    $('td').click(function () {
+        var currentRow = $(this).closest("tr");
+        var MaSP = currentRow.find("#DS_MaSP").html(); // get current row 1st table cell TD value
+        var SL = currentRow.find("#txt_DS_SoLuong").val(); // get current row 2nd table cell TD value
+        var tenSP = currentRow.find("#DS_TenSP").text(); // get current row 2nd table cell TD value
+        console.log("MÃ : " + MaSP + "|Số lượng : " + SL);
+        var col_index = $(this).index();
+        console.log(col_index);
+        if (col_index == 5) {
+            CatNhapGioHang(MaSP, SL, tenSP, 1);
+
+        } if (col_index == 7) {
+            var string = "  "+SL + " sản phẩm " + tenSP;
+            $.confirm({
+                title: 'Bạn có thực sự muốn xóa ?',
+                content: string,
+                backgroundDismiss: false,
+                escapeKey: true,
+                backgroundDismissAnimation: 'glow',
+                autoClose: 'Cancel|8000',
+                animation:'zoom',
+                buttons: {
+                    deleteUser: {
+                        text: 'Xóa',
+                        btnClass: "btn btn-primary",
+                        action: function () {
+                            CatNhapGioHang(MaSP, SL, tenSP, 2);
+                        }
+                    },
+                    Cancel: {
+                        text: 'Hủy',
+                        btnClass: "btn btn-primary",
+                        action: function () {
+                        }
+                    },
+                }
+            });
+        }
+    });
+</script>

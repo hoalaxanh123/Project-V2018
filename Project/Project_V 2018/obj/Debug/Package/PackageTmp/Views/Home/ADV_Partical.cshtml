@@ -1,0 +1,46 @@
+﻿<div class="main" style="margin-top:1%">
+    <div class="container SanPhamMoi">
+        <div class="row">
+            <div class="col-md-12">
+                <section class="product-content clearfix">
+                    <h1 class="title clearfix"><span>Sản phẩm mới</span></h1>
+                    <div class="product-block product-grid clearfix">
+                        @using Project_V_2018.Models
+                        @{
+                            foreach (SanPham item in Model)
+                            {
+                                <div class="col-md-2 col-sm-2 col-xs-12 product-resize product-item-box">
+                                    <div class="product-item">
+                                        <div class="image image-resize">
+                                            <a href="@Url.Action("ProductDetail_Partical","Products",new {@MaSP=item.MaSP })" title="Chi tiết sản phẩm @item.TenSP">
+                                                <img class="lazyload img-responsive" data-src="@item.HinhAnh" alt="@item.TenSP" />
+                                            </a>
+                                            <span class="new">Hot</span>
+                                        </div>
+                                        <div class="right-block">
+                                            <h2 class="name">
+                                                <a href="@Url.Action("ProductDetail_Partical","Products",new {@MaSP=item.MaSP })" title="Chi tiết sản phẩm @item.TenSP">@item.TenSP</a>
+                                            </h2>
+                                            <div class="rating">
+                                                <div class="rating-1">
+                                                    <span class="rating-img">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="price">
+                                                <span class="price-new">@MyClass.ToVND(item.GiaGiam.Value)  VND</span>
+                                            </div>
+                                            <div class="button">
+                                                <a href="@Url.Action("ProductDetail_Partical","Products",new {@MaSP=item.MaSP })" title="Xem thông tin sản phẩm @item.TenSP" class="btn btn-default btn-add-cart BLueColor">Xem</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            };
+                        }
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

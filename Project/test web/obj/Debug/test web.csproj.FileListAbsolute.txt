@@ -1,0 +1,58 @@
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\test web.dll.config
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\test web.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\test web.pdb
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\csc.exe
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\csc.exe.config
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\csc.rsp
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\csi.exe
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\csi.exe.config
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\csi.rsp
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\Microsoft.Win32.Primitives.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\System.AppContext.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\System.Collections.Immutable.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\System.Console.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\System.Diagnostics.Process.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\System.IO.Compression.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\System.IO.FileSystem.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\System.IO.Pipes.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\System.Reflection.Metadata.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\System.Security.AccessControl.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\System.Security.Claims.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\System.Security.Principal.Windows.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\System.Threading.Thread.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\System.ValueTuple.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\System.Xml.XmlDocument.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\System.Xml.XPath.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\vbc.exe
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\vbc.exe.config
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\vbc.rsp
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\VBCSCompiler.exe
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\roslyn\VBCSCompiler.exe.config
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\obj\Debug\test web.csprojAssemblyReference.cache
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\obj\Debug\test web.csproj.CoreCompileInputs.cache
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\obj\Debug\test web.csproj.CopyComplete
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\obj\Debug\test web.dll
+D:\Users\Admin\Downloads\Project_V 2018 - Copy\Project_V 2018 - Copy\test web\obj\Debug\test web.pdb

@@ -1,0 +1,31 @@
+body{font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+.slides{}
+.FullWidth{width:100%;}
+#TrongSuot{background:rgba(0,0,0,0);color:rgba(0,0,0,0);}
+.MatOng{color:black;}
+.MatOng:active{background-color:#ff9c00;color:white;}
+#button_Top{display:none;position:fixed;bottom:10%;right:10px;z-index:99;border:none;outline:none;background-color:transparent;color:white;cursor:pointer;padding:10px;border-radius:4px;}
+#button_Top:hover{background-color:#555;}
+#MauNen{background-color:#ff9c00;color:white}
+.myClass{margin-top:5%;font-weight:bold;}
+.myClass:hover{cursor:pointer;font-style:italic;color:#ff9c00;}
+.SetColor{color:#ff9c00;}
+.Left{margin-left:5%;}
+.CanhBao{text-align:center;color:red;}
+.GanFull{max-width:90%;}
+.title{text-align:left;}
+.MenuMobile__{}
+.Black{color:black;}
+.MaxHeight{max-height:100%;}
+.SanPhamMoi{margin-top:1%;}
+.myButton_top{background-color:transparent;color:#ffffff;padding:6.3px;border:0;display:block;outline:none;-webkit-transition:all 0.3s ease-in-out;-moz-transition:all 0.3s ease-in-out;-o-transition:all 0.3s ease-in-out;transition:all 0.3s ease-in-out;}
+.myButton_top:hover{color:#ff9c00;background-color:#eee;}
+@media only screen and (max-width:600px){.Mobile{display:none;}
+.search-controls input{width:200px;}
+}
+@media only screen and (max-width:800px){#txtsearch{width:200px;}
+}
+@media only screen and (max-width:510px){}
+@media only screen and (max-width:1190px){.Menu_SPMOI{max-height:475%;}
+}
+.lazy-hidden{background:#eee url('/Content/Images/load.gif') no-repeat 50% 50%;}

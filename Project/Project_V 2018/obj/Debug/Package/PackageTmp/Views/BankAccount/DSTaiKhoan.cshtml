@@ -1,0 +1,85 @@
+﻿@using Project_V_2018.Models
+@model List<TaiKhoanNganHang>
+<div id="NoiDungTaiKhoan" style="display:none">
+    <h6 class="title">Quý khách có thể chuyển tiền tới 1 trong những tài khoản sau : </h6>
+    @{
+        foreach (var item in Model)
+        {
+            <label>
+                &nbsp;&nbsp;+ @item.NganHang
+                : @item.SoTaiKhoan
+                , Chủ tài khoản : @item.ChuTaiKhoan
+                ,Chi nhánh : @item.ChiNhanh
+                <br />
+            </label>
+
+        }
+    }
+    <h6>Lưu ý : Trước và sau khi chuyển khoản xong quý khách vui lòng nhắn tin hoặc gọi điện trực tiếp tới shop để nhân viên kiểm tra tài khoản. Sau khi nhận được tiền shop sẽ tiến hành giao hàng cho quý khách trong vòng 24h.</h6>
+    <h6>Khi nhận hàng quý khách vui lòng thanh toán tiền cước ship hàng cho nhân viên bưu điện</h6>
+</div>
+<script>
+
+    $("#NDTK").html($("#NoiDungTaiKhoan").html());
+    $("#NDTK1").html($("#NoiDungTaiKhoan").html());
+</script>
+<div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <label >
+                    <input type="radio" name="KieuThanhToan" value="0" id="kt1" checked />&nbsp;
+                    <a class="MatOng" data-toggle="collapse" data-parent="#accordion" href="#collapse1" onclick="$('#kt1').prop('checked',true)">
+                        Khách ở ngoại thành: SHIP HÀNG NHANH. Chuyển khoản tiền hàng qua ngân hàng trước
+                    </a>
+                </label>
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse in">
+            <div class="panel-body" id="NDTK">
+
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <label>
+                    <input type="radio" name="KieuThanhToan" value="1" id="kt2" />&nbsp;
+                    <a class="MatOng" data-toggle="collapse" data-parent="#accordion" href="#collapse2" onclick="$('#kt2').prop('checked',true)">
+                        Khách ở ngoại thành: SHIP HÀNG THƯỜNG. Chuyển khoản tiền hàng qua ngân hàng trước
+                    </a>
+                </label>
+            </h4>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse">
+            <div class="panel-body" id="NDTK1">
+
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <label>
+                    <input type="radio" name="KieuThanhToan" value="2" id="kt3"/>&nbsp;
+                    <a class="MatOng" data-toggle="collapse" data-parent="#accordion" href="#collapse3" onclick="$('#kt3').prop('checked',true)">
+                        Khách nội thành: Nhận hàng tại cửa hàng miễn phí giao hàng hoặc giao tận nơi phí 10.000đ
+                    </a>
+                </label>
+            </h4>
+        </div>
+        <div id="collapse3" class="panel-collapse collapse">
+            <div class="panel-body" id="NDTK2">
+                <h6>
+                    Trong nội thành Đà Lạt chúng tôi giao hàng với phí giao hàng: 10.000đ - 30.000đ. Vui lòng thanh toán tiền hàng + tiền ship cho nhân viên giao hàng khi nhận . Nếu quý khách đến cửa hàng mua hàng thì không tốn phí giao hàng.
+                </h6>
+                <h6>
+                    Xin chân thành cám ơn quý khách đã tin tưởng và ủng hộ cửa hàng.
+                </h6>
+
+            </div>
+        </div>
+    </div>
+</div>
+

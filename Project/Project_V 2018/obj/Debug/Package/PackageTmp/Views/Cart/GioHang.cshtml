@@ -1,0 +1,97 @@
+﻿
+@Html.Partial("~/Views/Home/Head.cshtml")
+@Html.Action("Header_Partical", "Home")
+@Html.Action("SlideShow_Partical", "Home")
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Menus").addClass("hidden");
+        $("#slideshow").addClass("hidden");
+    })
+</script>
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = null;
+}
+<script>
+    $(document).ready(function () {
+        LoadDSGioHang();
+    });
+    function LoadDSGioHang() {
+        $.post("DSGioHang_Partial", {}, function (data) {
+            $("#DSHang").html(data);
+        });
+
+    }
+</script>
+
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 panel panel-default">
+                <div class="cart-content ng-scope">
+                    @*<h1 class="panel-heading jumbotron"><span >Giỏ hàng của tôi</span></h1>*@
+                    <div class="panel-body">
+                        <div class="steps clearfix">
+                            <ul class="clearfix">
+                                <li class="cart active col-md-2 col-xs-4 col-sm-4 col-md-offset-3 col-sm-offset-0 col-xs-offset-0"><span><i class="fas fa-cart-arrow-down"></i></span><span class="hidden-xs">Giỏ hàng của tôi</span></li>
+                                <li class="payment col-md-2 col-xs-4 col-sm-4"><span><i class="fas fa-hand-holding-usd"></i></span><span class="hidden-xs">Thanh toán</span></li>
+                                <li class="finish col-md-2 col-xs-4 col-sm-4"><span><i class="fas fa-plane"></i></span><span class="hidden-xs">Hoàn tất</span></li>
+                            </ul>
+                        </div>
+                        <div class="show-mobile hidden-lg hidden-md">
+                            <h6><b style="color:red">Kéo danh sách sang phải để xem thêm thông tin</b></h6>
+                        </div>
+                        <div class="cart-block">
+                            <div class="cart-info table-responsive">
+
+                                <table class="table product-list" id="TaB">
+                                    <thead>
+                                        <tr class="success">
+                                            <th style="display:none">Mã SP</th>
+                                            <th></th>
+                                            <th>Thông tin sản phẩm</th>
+                                            <th>Giá</th>
+                                            <th>Số lượng</th>
+                                            <th>Sửa</th>
+                                            <th>Thành tiền</th>
+                                            <th>CN.Thêm</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="DSHang"></tbody>
+                                </table>
+                            </div>
+                            <hr />
+                            <div class="clearfix text-right">
+                                <span><b>Tổng số sản phẩm:</b></span>
+                                <span class="pay-price ng-binding">
+                                    <b id="TongSP"></b> SP
+                                </span>
+                                <br />
+                                <span><b>Tổng thanh toán:</b></span>
+                                <span class="pay-price ng-binding">
+                                    <b id="TongSoTien"></b> VND
+                                </span>
+                            </div>
+
+                            <div class="button text-right pull-right">
+                                <a class="btn btn-default " href="~/Home">Tiếp tục mua hàng</a>
+                                <button class="btn btn-primary" href="#" id="btn_ThanhToan">Tiến hành thanh toán</button>
+                                <script type="text/javascript">
+                                    $("#btn_ThanhToan").click(function () {
+                                        if ($("#TongSP").text() == "" || $("#TongSP").text() <= 0) {
+                                            Mess("Không có gì để thanh toán , hãy chọn một mặt hàng bạn thích để sang bước kế tiếp");
+                                        }
+                                        else {
+                                            window.location.replace("/cart/TienHanhThanhToan");
+                                        }
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Action("Footer_Partical", "Home")

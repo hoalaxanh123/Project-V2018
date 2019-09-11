@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Tìm kiếm";
+    Layout = null;
+}
+@using PagedList;
+@using PagedList.Mvc;
+@Html.Partial("~/Views/Home/Head.cshtml")
+@Html.Action("Header_Partical", "Home")
+@Html.Action("SlideShow_Partical", "Home")
+@using Project_V_2018.Models
+@model IPagedList<Project_V_2018.Models.SanPham>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Menus").addClass("hidden");
+        $("#slideshow").addClass("hidden");
+    })
+</script>
+<div class="main SanPhamMoi">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 panel panel-default">
+                @{
+                    if (Model != null)
+                    {
+                        <h1 class="title panel-heading"><b>Kết quả tìm kiếm</b></h1>
+                        <div class="product-content clearfix">
+                            <div class="panel-body  product-block product-grid clearfix">
+                                <div id="TenSach"><h5 class="title">@ViewBag.ThongBao</h5></div><br />
+
+                                @{
+                                    foreach (SanPham item in Model)
+                                    {
+                                        <div class="col-md-2 col-sm-2 col-xs-12 product-resize product-item-box" style="margin-top:1%">
+                                            <div class="product-item">
+                                                <div class="image image-resize">
+                                                    <a href="@Url.Action("ProductDetail_Partical","Products",new {@MaSP=item.MaSP })" title="Chi tiết sản phẩm @item.TenSP">
+                                                        <img src="@item.HinhAnh" alt="@item.TenSP" class="img-responsive lazy-img" />
+                                                    </a>
+                                                </div>
+                                                <div class="right-block">
+                                                    <h2 class="name">
+                                                        <a href="@Url.Action("ProductDetail_Partical","Products",new {@MaSP=item.MaSP })" title="Chi tiết sản phẩm @item.TenSP">@item.TenSP</a>
+                                                    </h2>
+                                                    <div class="rating">
+                                                        <div class="rating-1">
+                                                            <span class="rating-img">
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="price">
+                                                        <span class="price-new">@item.Gia.Value.ToString("0,0", System.Globalization.CultureInfo.InvariantCulture)  VND</span>
+                                                    </div>
+                                                    <div class="button">
+                                                        <a href="@Url.Action("ProductDetail_Partical","Products",new {@MaSP=item.MaSP })" title="Mua sản phẩm này" class="btn btn-default btn-add-cart">Mua</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+
+                                <div id="divBody" class="col-md-12">
+                                    <br />
+                                    <b> Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount</b>
+                                </div>
+                                <div id="divBody" class="col-md-12">
+                                    @Html.PagedListPager(Model, page => Url.Action("KetQuaTimKiem", "Home", new { _TuKhoa = ViewBag.TuKhoa, maLoai = ViewBag.MaLoai, _Page = page }))
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <h1 class="title panel-heading"><b>Không có sản phẩm mà bạn đang tìm kiếm</b></h1>
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Tài khoản giao dịch";
+    Layout = null;
+}
+@model List<Project_V_2018.Models.TaiKhoanNganHang>
+@Html.Partial("~/Views/Home/Head.cshtml")
+@Html.Action("Header_Partical", "Home")
+@Html.Action("SlideShow_Partical", "Home")
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Menus").addClass("hidden");
+        $("#slideshow").addClass("hidden");
+    })
+</script>
+
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                @Html.Action("HoTroTrucTuyen_Partial", "Store")
+            </div>
+            <div class="col-md-9">
+                <h1 class="title">
+                    <span>Tài khoản giao dịch</span>
+                </h1>
+                @using Project_V_2018.Models
+                <div class="panel-group" id="accordion">
+                    @{
+                        int stt = 0;
+                        for (int i = 0; i < Model.Count; i++)
+                        {
+                            var item = Model[i];
+                            string id = "collapse" + i;
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#@id" style="display:block">@(i+1). @item.NganHang</a>
+                                    </h4>
+                                </div>
+                                <div id="@id" class="panel-collapse collapse ">
+                                    <div class="panel-body">
+                                        <h6>Chủ tài khoản : @item.ChuTaiKhoan</h6>
+                                        <h6>Số tài khoản : @item.SoTaiKhoan</h6>
+                                        <h6>Chi nhánh : @item.ChiNhanh</h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@Html.Action("Footer_Partical", "Home")

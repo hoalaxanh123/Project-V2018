@@ -1,0 +1,1095 @@
+﻿
+
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta charset="UTF-8" />
+    <meta content="Mật ong tâm phát" name="description" />
+    <meta content="" name="keywords" />
+    <link rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="vi_VN" property="og:locale" />
+    <meta content="website" property="og:type" />
+    <meta property="fb:admins" content="hoalaxanh123" />
+
+
+    <meta content="Mật ong nguy&#234;n chất 1" property="og:title" />
+    <meta content="Mật ong nguy&#234;n chất 1" property="og:description" />
+    <meta content="/Content/Upload/SanPham/MatOng/1.jpg" property="og:image" />
+    <meta content="/Content/Upload/SanPham/MatOng/1.jpg" property="og:url" />
+    <meta content="Mật ong nguy&#234;n chất 1" property="og:site_name" />
+    <title>Mật ong tâm  phát - Mật ong nguy&#234;n chất 1</title>
+    <meta content="Mật ong nguy&#234;n chất 1" name="description" />
+    <meta content="Mật ong nguy&#234;n chất 1" name="keywords" />
+
+
+    <script src="/Scripts/jquery-3.3.1.min.js"></script>
+    <link href="/Content/source/Scripts/bootstrap.min.css" rel="stylesheet" />
+    <script src="/Scripts/bootstrap.min.js"></script>
+
+
+    <link href="/Content/source/App_Themes/Home/common.css" rel="stylesheet" />
+    <link href="/Content/source/Scripts/App_Themes/Home/animate.css" rel="stylesheet" />
+    <script src="/Content/source/Scripts/fix-height.js"></script>
+    <link href="/Content/source/responsive.css" rel="stylesheet" />
+    <link href="/Content/source/style.css" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
+
+    <script src="/Content/JS/myJS.js"></script>
+    <link href="/Content/MyCSS.css" rel="stylesheet" />
+    <link href="/Content/StepByStep/StepByStep.css" rel="stylesheet" />
+
+
+    <link href="/Content/Test/normalize.css" rel="stylesheet" />
+    <link href="/Content/Test/ns-default.css" rel="stylesheet" />
+    <link href="/Content/Test/ns-style-bar.css" rel="stylesheet" />
+    <script src="/Content/Test/js/modernizr.custom.js"></script>
+
+    <link href="/Content/ConfirmDialog/dist/jquery-confirm.min.css" rel="stylesheet" />
+    <link href="/Content/ConfirmDialog/css/jquery-confirm.css" rel="stylesheet" />
+    <script src="/Content/ConfirmDialog/js/jquery-confirm.js"></script>
+    <script src="/Content/JS/Cart.js"></script>
+    <script src="/Content/JS/Login_User.js"></script>
+
+</head>
+<i id="DauTrang" class="hidden"></i>
+<div class="header">
+    <section class="top-link clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="hidden-xs">
+                        <ul class="nav navbar-nav topmenu-contact pull-left">
+                            <li><i class="fa fa-phone"></i> <span>Hotline:01668351266</span></li>
+                        </ul>
+                    </div>
+
+                    <ul class="nav navbar-nav navbar-right topmenu  hidden-xs hidden-sm">
+                        <li class="order-check"><a href='/kiem-tra-don-hang'><i class="fas fa-clipboard-list"></i> Kiểm tra đơn hàng</a></li>
+                        <li class="order-cart"><a href='/Cart/GioHang'><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+                        <li class="account-login">
+                            <button style="background-color: transparent;color: white;border: 0;margin-top:  11.5%;" onclick="Login()">
+                                <i class="fas fa-sign-in-alt"></i> Đăng nhập
+                            </button>
+
+                        </li>
+                        <li class="account-register">
+                            <a href='/dang-ky' id="Btn_Register"><i class="fa fa-key"></i> Đăng ký </a>
+                            <i id="TenDangNhap" style="display:none"></i>
+                        </li>
+
+                    </ul>
+
+
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header" style="padding:35px 50px;">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h1><span class="fas fa-users"></span>&nbsp; Đăng nhập</h1>
+                                </div>
+                                <div class="modal-body" style="padding:40px 50px;">
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <label class="text-danger " id="KetQuaDangNhap"></label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="usrname"><span class="fas fa-user-alt"></span> Username</label>
+                                            <input type="text" class="form-control" id="userName" placeholder="Nhập tên đăng nhập" required />
+                                            <span id="error_name" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="psw"><span class="fas fa-lock"></span> Password</label>
+                                            <input type="password" class="form-control" id="passWord" placeholder="Nhập mật khẩu" required />
+                                            <span id="error_pass" class="text-danger"></span>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" checked id="SaveMe"> Nhớ tài khoản
+                                            </label>
+                                        </div>
+                                        <button type="button" id="btn_DangNhap" class="btn btn-success btn-block" onclick="DangNhap()"><span class="fas fa-sign-in-alt"></span>&nbsp;Đăng nhập</button>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal"> <span class="fas fa-times"></span> Hủy</button>
+                                    <p>Bạn chưa có tài khoản ? <a href='/dang-ky' style="color:red;font-size:15px">Đăng ký ngay</a></p>
+                                    <p>Quên <a href="#">Mật khẩu?</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        document.getElementById("myModal").addEventListener("keyup", function (event) {
+                            event.preventDefault();
+                            if (event.keyCode === 13) {
+                                document.getElementById("btn_DangNhap").click();
+                            }
+                        });
+                    </script>
+                    <script src="/Content/JS/Validate_Login_User.js"></script>
+
+                    <div class="show-mobile hidden-lg hidden-md">
+                        <div class="quick-user MenuMobile__">
+                            <div class="quickaccess-toggle">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <div class="inner-toggle">
+                                <ul class="login links">
+                                    <li class="account-login"><a style="color:black" href="#" onclick="Login()"><i class="fas fa-sign-in-alt"></i> Đăng nhập </a></li>
+                                    <li class="account-register">
+                                        <a href='/dang-ky' id="Btn_Register" style="color:black"><i class="fa fa-key"></i> Đăng ký </a>
+                                        <i id="TenDangNhap" style="display:none"></i>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="quick-access MenuMobile__">
+                            <div class="quickaccess-toggle">
+                                <i class="fas fa-shopping-basket"></i>
+                            </div>
+                            <div class="inner-toggle">
+                                <ul class="links">
+                                    <li><a id="mobile-wishlist-total" href="/kiem-tra-don-hang" class="wishlist" style="color:black"><i class="fas fa-clipboard-list"></i> Kiểm tra đơn hàng</a></li>
+                                    <li><a href='/Cart/GioHang' class="shoppingcart" style="color:black"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="quick-access MenuMobile__" style="">
+                            <div class="quickaccess-toggle">
+                                <i class="fa fa-list"></i>
+                            </div>
+                            <div class="inner-toggle">
+                                <ul class="links">
+                                    <li><a style="color:black" href='/Home/Header_Partical' title="Về trang chủ mật ong Tâm Phát"><i class="fas fa-home"></i>Trang chủ</a></li>
+                                    <li><a style="color:black" href='/gioi-thieu'><i class="fas fa-info-circle"></i>Giới thiệu</a></li>
+                                    <li><a style="color:black" href='http://fb.com/matongtamphat'><i class="fas fa-newspaper"></i>Tin tức</a></li>
+                                    <li><a style="color:black" href="/lien-he"><i class="fas fa-comments"></i>Liên hệ</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="header-content clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-xs-12 col-sm-12 header-left text-center">
+                    <div class="logo">
+                        <a href="/" title="Mật ong Tâm Phát">
+
+                            <img alt=C&#244;ng ty TNHH T&#226;m Ph&#225;t src=/Content/Images/01668351266.png />
+
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-9 col-xs-12 col-sm-12 header-right">
+                    <div class="sale-policy clearfix hidden-sm hidden-xs">
+                        <ul class="clearfix">
+                            <li class="shipping">
+                                <i class="fa fa-truck"></i><span>
+                                    Giao hàng miễn phí
+                                </span>
+                            </li>
+                            <li class="payment">
+                                <i class="fas fa-hand-holding-usd"></i><span>
+                                    Thanh toán linh hoạt
+                                </span>
+                            </li>
+                            <li class="return">
+                                <i class="fas fa-headset"></i><span>
+                                    Tư vấn nhiệt tình chu đáo
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="cart" style="margin-top:-10px">
+                        <div class="heading">
+                            <a href='/Cart/GioHang'>
+                                <span class="icon"><img src="/Content/Images/Bag.gif" style="width:60px" /></span><span id="cart-total">
+
+                                    <b id="SoSP" class="text-danger"></b> SP
+                                    <b id="TongTien" style="display:none"></b>
+                                </span><i class="fa fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $.post('/Cart/GioHangPartial', {}, function (data) {
+                                $("#SoSP").text(data);
+                                $("#TongSP").text(data);
+                            });
+                            $.post('/Cart/GioHangTongTien', {}, function (data) {
+                                $("#TongTien").text(data);
+                                $("#TongSoTien").text(data);
+                                $("#TongTienThanhToan").text(data);
+                                $("#SoTienThanhToan").text(data);
+                            });
+                        });
+                    </script>
+                    <div class="search hidden-sm hidden-xs">
+                        <div class="input-cat form-search clearfix">
+
+                            <form action="/Home/KetQuaTimKiem" method="post">
+                                <div class="form-search-controls">
+                                    <input id="txtsearch" name="txt_TimKiem" placeholder="Nhập vào dữ liệu tìm kiếm" type="text" value="" />
+                                    <button class="btn btn-search" title="Search" type="submit" id="btnsearch" value="Search">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                    <div class="select-categories">
+                                        <select id="LoaiHangTimKiem" name="Loai">
+                                            <option value="-1" selected="selected">Tất cả</option>
+                                            <option value="2">Mật ong</option>
+                                            <option value="5">Phấn hoa</option>
+                                            <option value="6">Sữa ong ch&#250;a</option>
+                                            <option value="7">Nghệ đen</option>
+                                            <option value="8">Dụng cụ l&#224;m ong</option>
+                                            <option value="9">C&#225;c sản phẩm ng&#224;nh ong</option>
+
+                                        </select>
+                                    </div>
+
+                                    <script type="text/javascript">
+                                        $("#btnsearch").click(function () {
+                                            SearchProduct();
+                                        });
+                                        $("#txtsearch").keydown(function (event) {
+                                            if (event.keyCode == 13) {
+                                                SearchProduct();
+                                            }
+                                        });
+                                        function SearchProduct() {
+                                            var key = $('#txtsearch').val();
+                                            if (key == '' || key == 'Nhập vào dữ liệu tìm kiếm...') {
+                                                $('#txtsearch').focus();
+                                                return;
+                                            }
+                                        }
+                                    </script>
+                                </div>
+                            </form>
+
+
+
+                        </div>
+                    </div>
+                    <div class="social-group">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="navigation-menu clearfix">
+        <div class="container">
+            <div class="menu-top">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="menu-cate menu-quick-select">
+                            <div class="menu-cate-title" onclick="Menu()" id="MenuButton">
+                                <span><i id="arrow" class="fa fa-th-list"></i><a href="#">Danh mục sản phẩm</a></span>
+                                <i class="fa fa-chevron-circle-down"></i>
+                            </div>
+                            <ul class="menu-cate-content Menu_SPMOI" id="Menus">
+                                <li>
+                                <li>
+                                    <a href="/Products/Products_LoadByCast_Partial?MaLoai=2" title="Xem các sản phẩm thuộc loại Mật ong thơm ngon nguy&#234;n chất ch&#237;nh h&#227;ng chất lượng cao">
+                                        <i class="icon-menu fa /Uploads/shop90/images/icon/i_catelogy_7-20x20_png_pagespeed_ce_kzOx8kw31-.png"></i>
+                                        Mật ong<span class="arrow-menu"><i class="fa fa-chevron-right "></i></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Products/Products_LoadByCast_Partial?MaLoai=5" title="Xem các sản phẩm thuộc loại Phấn hoa thơm ngon nguy&#234;n chất ch&#237;nh h&#227;ng chất lượng cao">
+                                        <i class="icon-menu fa /Uploads/shop90/images/icon/i_catelogy_7-20x20_png_pagespeed_ce_kzOx8kw31-.png"></i>
+                                        Phấn hoa<span class="arrow-menu"><i class="fa fa-chevron-right "></i></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Products/Products_LoadByCast_Partial?MaLoai=6" title="Xem các sản phẩm thuộc loại Sữa ong ch&#250;a thơm ngon nguy&#234;n chất ch&#237;nh h&#227;ng chất lượng cao">
+                                        <i class="icon-menu fa /Uploads/shop90/images/icon/i_catelogy_7-20x20_png_pagespeed_ce_kzOx8kw31-.png"></i>
+                                        Sữa ong ch&#250;a<span class="arrow-menu"><i class="fa fa-chevron-right "></i></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Products/Products_LoadByCast_Partial?MaLoai=7" title="Xem các sản phẩm thuộc loại Nghệ đen thơm ngon nguy&#234;n chất ch&#237;nh h&#227;ng chất lượng cao">
+                                        <i class="icon-menu fa /Uploads/shop90/images/icon/i_catelogy_7-20x20_png_pagespeed_ce_kzOx8kw31-.png"></i>
+                                        Nghệ đen<span class="arrow-menu"><i class="fa fa-chevron-right "></i></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Products/Products_LoadByCast_Partial?MaLoai=8" title="Xem các sản phẩm thuộc loại Tổng hợp c&#225;c dụng cụ cho  người l&#224;m ong">
+                                        <i class="icon-menu fa /Uploads/shop90/images/icon/i_catelogy_7-20x20_png_pagespeed_ce_kzOx8kw31-.png"></i>
+                                        Dụng cụ l&#224;m ong<span class="arrow-menu"><i class="fa fa-chevron-right "></i></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Products/Products_LoadByCast_Partial?MaLoai=9" title="Xem các sản phẩm thuộc loại C&#225;c sản phẩm kh&#225;c thuộc ng&#224;nh ong">
+                                        <i class="icon-menu fa /Uploads/shop90/images/icon/i_catelogy_7-20x20_png_pagespeed_ce_kzOx8kw31-.png"></i>
+                                        C&#225;c sản phẩm ng&#224;nh ong<span class="arrow-menu"><i class="fa fa-chevron-right "></i></span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                            <script type="text/javascript">
+                                $("#MenuButton").click(function () {
+                                    $("#Menus").toggleClass("hidden");
+                                    $("#slideshow").toggleClass("hidden");
+                                    //$("#slideshow").removeClass("nivoSlider");
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <div class="col-md-9 ">
+                        <nav class="navbar nav-menu">
+                            <nav class="hidden-xs hidden-sm">
+                                <ul class='menu nav navbar-nav'>
+                                    <li class="level0"><a style="background:rgba(0,0,0,0)" href='/Home/Header_Partical' title="Về trang chủ mật ong Tâm Phát"><span>Trang chủ</span></a></li>
+                                    <li class="level0"><a style="background:rgba(0,0,0,0)" href='/gioi-thieu'><span>Giới thiệu</span></a></li>
+                                    <li class="level0"><a style="background:rgba(0,0,0,0)" href='http://fb.com/matongtamphat'><span>Tin tức</span></a></li>
+                                    <li class="level0"><a style="background:rgba(0,0,0,0)" href="/lien-he"><span>Liên hệ</span></a></li>
+                                </ul>
+                            </nav>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var str = location.href.toLowerCase();
+        $("ul.menu li a").each(function () {
+            if (str.indexOf(this.href.toLowerCase()) >= 0) {
+                $("ul.menu li").removeClass("active");
+                $(this).parent().addClass("active");
+            }
+        });
+    });
+    $(document).ajaxStart(function () {
+        waitingDialog.show();
+    }).ajaxSuccess(function () {
+        waitingDialog.hide();
+    }).ajaxError(function () {
+        waitingDialog.hide();
+    }).ajaxStop(function () {
+        waitingDialog.hide();
+    });
+
+</script>
+
+<div class="container" style="height:280px" id="slideshow">
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-9">
+            <script src="/Content/JS/responsiveslides.min.js"></script>
+            <link href="/Content/JS/Slider.css" rel="stylesheet" />
+            <ul class="rslides">
+                <li><img class="lazyload" data-src="/Content/Images/1.jpg" /></li>
+                <li><img class="lazyload" data-src="/Content/Images/2.jpg" /></li>
+                <li><img class="lazyload" data-src="/Content/Images/3.jpg" /></li>
+                <li><img class="lazyload" data-src="/Content/Images/4.jpg" /></li>
+                <li><img class="lazyload" data-src="/Content/Images/5.jpg" /></li>
+                <li><img class="lazyload" data-src="/Content/Images/6.jpg" /></li>
+            </ul>
+
+            <script>
+                $(function () {
+                    $(".rslides").responsiveSlides({
+                        auto: true,             // Boolean: Animate automatically, true or false
+                        speed: 500,            // Integer: Speed of the transition, in milliseconds
+                        timeout: 4000,          // Integer: Time between slide transitions, in milliseconds
+                        pager: false,           // Boolean: Show pager, true or false
+                        nav: false,             // Boolean: Show navigation, true or false
+                        random: true,          // Boolean: Randomize the order of the slides, true or false
+                        pause: false,           // Boolean: Pause on hover, true or false
+                        pauseControls: true,    // Boolean: Pause when hovering controls, true or false
+                        prevText: "",   // String: Text for the "previous" button
+                        nextText: "",       // String: Text for the "next" button
+                        maxwidth: "",           // Integer: Max-width of the slideshow, in pixels
+                        navContainer: "",       // Selector: Where controls should be appended to, default is after the 'ul'
+                        manualControls: "",     // Selector: Declare custom pager navigation
+                        namespace: "rslides",   // String: Change the default namespace used
+                        before: function () { },   // Function: Before callback
+                        after: function () { }     // Function: After callback
+                    });
+                });
+            </script>
+
+        </div>
+    </div>
+
+</div>
+</div>
+
+
+<!--End-->
+
+
+
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="box-sale-policy">
+                    <h3><span>Chính sách bán hàng</span></h3>
+                    <div class="sale-policy-block">
+                        <ul>
+                            <li>Giao hàng TOÀN QUỐC</li>
+                            <li>Thanh toán khi nhận hàng</li>
+                            <li>Đổi trả trong <span>10 ngày</span></li>
+                            <li>Hoàn ngay tiền mặt</li>
+                            <li>Chất lượng đảm bảo</li>
+                            <li>Miễn phí vận chuyển:<span>Đơn hàng từ 5 món trở lên</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="buy-guide">
+                        <h3>Hướng Dẫn Mua Hàng</h3>
+                        <ul>
+                            <li>
+                                Mua hàng trực tiếp tại website này
+                            </li>
+                            <li>
+                                Gọi điện thoại <strong>
+                                    0166.835.1266
+                                </strong> để mua hàng
+                            </li>
+                            <li>
+                                Mua tại Trung tâm CSKH:<br />
+                                Tổ 24- Đinh Ti&#234;n Ho&#224;ng- Thị Trấn Li&#234;n Nghĩa- Huyện Đức Trọng- Tỉnh L&#226;m Đồng- Li&#234;n Nghĩa- Đức Trọng- L&#226;m Đồng
+                                <a href="https://www.google.com/maps?ll=11.724257,108.367599&z=12&t=m&hl=en-US&gl=US&mapclient=embed&cid=3302376672672041635" rel="nofollow" target="_blank">Xem Bản Đồ</a>
+                            </li>
+                            <li>
+                                Mua sỉ/buôn xin gọi <strong>
+                                    0166.835.1266
+                                </strong> để được
+                                hỗ trợ.
+                            </li>
+                        </ul>
+                    </div>
+                    <!--End-->
+
+                </div>
+
+                <div class="box-product hidden-xs">
+                    <h3>
+                        <span>
+                            Sản phẩm Hot
+                        </span>
+                    </h3>
+
+                    <div class="box-product-block">
+
+                        <div class="box-product-block ">
+                            <div class="item panel panel-info" style="margin-top:2%">
+                                <div class="image">
+                                    <a href="/Products/ProductDetail_Partical?MaSP=1" title="Chi tiết sản phẩm Mật ong nguy&#234;n chất 1">
+                                        <img data-src="/Content/Upload/SanPham/MatOng/1.jpg" alt="Mật ong nguy&#234;n chất 1" class="img-responsive lazyload" />
+                                    </a>
+                                </div>
+                                <div class="name">
+                                    <a href="/Products/ProductDetail_Partical?MaSP=1" title="Chi tiết sản phẩm Mật ong nguy&#234;n chất 1">Mật ong nguy&#234;n chất 1</a>
+                                </div>
+                                <div class="rating">
+                                    <div class="rating-1">
+                                        <span class="rating-img">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="price">
+                                    <span class="price-new">110,000  VND</span>
+                                    <span class="price-old">120,000  VND</span>
+                                </div>
+                                <div class="button text-center">
+                                    <a class="btn btn-default btn-add-cart" href="/Products/ProductDetail_Partical?MaSP=1">Mua</a>
+                                </div>
+                            </div>
+                            <div class="item panel panel-info" style="margin-top:2%">
+                                <div class="image">
+                                    <a href="/Products/ProductDetail_Partical?MaSP=2" title="Chi tiết sản phẩm Mật ong nguy&#234;n chất 2">
+                                        <img data-src="/Content/Upload/SanPham/MatOng/2.jpg" alt="Mật ong nguy&#234;n chất 2" class="img-responsive lazyload" />
+                                    </a>
+                                </div>
+                                <div class="name">
+                                    <a href="/Products/ProductDetail_Partical?MaSP=2" title="Chi tiết sản phẩm Mật ong nguy&#234;n chất 2">Mật ong nguy&#234;n chất 2</a>
+                                </div>
+                                <div class="rating">
+                                    <div class="rating-1">
+                                        <span class="rating-img">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="price">
+                                    <span class="price-new">110,000  VND</span>
+                                    <span class="price-old">120,000  VND</span>
+                                </div>
+                                <div class="button text-center">
+                                    <a class="btn btn-default btn-add-cart" href="/Products/ProductDetail_Partical?MaSP=2">Mua</a>
+                                </div>
+                            </div>
+                            <div class="item panel panel-info" style="margin-top:2%">
+                                <div class="image">
+                                    <a href="/Products/ProductDetail_Partical?MaSP=3" title="Chi tiết sản phẩm Mật ong nguy&#234;n chất 3">
+                                        <img data-src="/Content/Upload/SanPham/MatOng/3.jpg" alt="Mật ong nguy&#234;n chất 3" class="img-responsive lazyload" />
+                                    </a>
+                                </div>
+                                <div class="name">
+                                    <a href="/Products/ProductDetail_Partical?MaSP=3" title="Chi tiết sản phẩm Mật ong nguy&#234;n chất 3">Mật ong nguy&#234;n chất 3</a>
+                                </div>
+                                <div class="rating">
+                                    <div class="rating-1">
+                                        <span class="rating-img">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="price">
+                                    <span class="price-new">110,000  VND</span>
+                                    <span class="price-old">120,000  VND</span>
+                                </div>
+                                <div class="button text-center">
+                                    <a class="btn btn-default btn-add-cart" href="/Products/ProductDetail_Partical?MaSP=3">Mua</a>
+                                </div>
+                            </div>
+                            <div class="item panel panel-info" style="margin-top:2%">
+                                <div class="image">
+                                    <a href="/Products/ProductDetail_Partical?MaSP=4" title="Chi tiết sản phẩm Mật ong nguy&#234;n chất 4">
+                                        <img data-src="/Content/Upload/SanPham/MatOng/4.jpg" alt="Mật ong nguy&#234;n chất 4" class="img-responsive lazyload" />
+                                    </a>
+                                </div>
+                                <div class="name">
+                                    <a href="/Products/ProductDetail_Partical?MaSP=4" title="Chi tiết sản phẩm Mật ong nguy&#234;n chất 4">Mật ong nguy&#234;n chất 4</a>
+                                </div>
+                                <div class="rating">
+                                    <div class="rating-1">
+                                        <span class="rating-img">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="price">
+                                    <span class="price-new">110,000  VND</span>
+                                    <span class="price-old">120,000  VND</span>
+                                </div>
+                                <div class="button text-center">
+                                    <a class="btn btn-default btn-add-cart" href="/Products/ProductDetail_Partical?MaSP=4">Mua</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="modal" id="modalCallMe" role="dialog" aria-labelledby="modalCallMeLabel">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <h2>Cám ơn Qúy Khách đã liên hệ đặt hàng</h2>
+                                <p>Shop sẽ gọi lại để tư vấn cho Quý khách hàng trong thời gian sớm nhất</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" onclick=' $("#modalCallMe").addClass("hide")'>
+                                    OK
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav nav-tabs">
+                    <li role="presentation">
+                        <a data-toggle="tab" href="#">Thông tin sản phẩm</a>
+                    </li>
+                </ul>
+
+                <div class="panel panel-default">
+                    <link href="/Content/source/productCSS/smoothproducts.css" rel="stylesheet" />
+                    <script src="/Content/source/productCSS/smoothproducts.js"></script>
+                    <div class="product-detail clearfix relative ">
+                        <span us-spinner="{radius:5, width:3, length: 3}"></span>
+                        <!--Begin-->
+                        <div class="product-block clearfix">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-12 product-image clearfix">
+                                    <div class="col-md-12" style="margin-top:4%">
+                                        <img src="/Content/Upload/SanPham/MatOng/1.jpg" class="img-responsive img-thumbnail ">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12 clearfix">
+                                    <h2 class="panel-heading">Tên SP: <i id="TenSP GanFull" style="font-style:normal"> Mật ong nguy&#234;n chất 1 </i></h2>
+                                    <div class="panel-body">
+                                        <div class="price" ng-if="IsTrackingInventory==false||AllowPurchaseWhenSoldOut==true || (IsTrackingInventory&&AllowPurchaseWhenSoldOut==false&&Quantity>0)">
+                                            <div ng-if="IsPromotion==true">
+                                                <span class="price-new">110,000 VND</span>
+                                                <span class="price-old">120,000 VND</span>
+                                            </div>
+                                            <span class="product-code">Mã SP: <i id="MaSP" style="font-style:normal">1</i></span>
+                                        </div>
+                                        <div class="price">
+                                            <span class="product-code">Còn : <b style="color:red">100 sản phẩm</b></span>
+                                        </div>
+                                        <div class="des GanFull" ng-bind-html="Summary|unsafe">
+                                            <div>
+                                                Mật ong là một thứ nguyên liệu dễ kiếm và dễ sử dụng. Đồng thời, nó cũng có rất nhiều lợi ích đối với sức khỏe con người .
+                                            </div>
+
+                                        </div>
+                                        <div class="quantity clearfix">
+                                            <label>Số lượng</label>
+                                            <div class="quantity-input">
+                                                <input type="number" value="1" class="text" id="SoLuong" style="margin-bottom:5px" />
+                                                <label id="TB" class="text-danger"></label>
+                                            </div>
+                                        </div>
+                                        <script type="text/javascript">
+                                            document.getElementById("SoLuong").addEventListener("keyup", function (event) {
+                                                event.preventDefault();
+                                                if (event.keyCode === 13) {
+                                                    document.getElementById("btn_ThemGioHang").click();
+                                                }
+                                            });
+                                            $("#SoLuong").on('input', function () {
+                                                if ($("#SoLuong").val() == "" || $("#SoLuong").val() <= 0) {
+                                                    $("#btn_ThemGioHang").addClass("btn-info disabled");
+                                                    $("#TB").text("Vui lòng nhập số lượng hợp lệ")
+                                                    $("#btn_MuaNgay").addClass("btn-info disabled");
+                                                }
+                                                else {
+                                                    $("#btn_ThemGioHang").removeClass("btn-info disabled");
+                                                    $("#btn_MuaNgay").removeClass("btn-info disabled");
+                                                    $("#TB").text("")
+                                                }
+
+                                            });
+                                        </script>
+                                        <div class="button">
+                                            <button class="btn btn-default" id="btn_ThemGioHang"><i class="fas fa-cart-plus"></i>Thêm giỏ hàng</button>
+                                            <button href="#" class="btn btn-primary" id="btn_MuaNgay"><i class="fas fa-credit-card"></i>Mua ngay</button>
+                                        </div>
+
+                                        <script type="text/javascript">
+                                            $("#btn_ThemGioHang").click(function () {
+                                                var tenSP = $("#TenSP").text();
+                                                var maSP = $("#MaSP").text();
+                                                var soLuong = $("#SoLuong").val();
+                                                CatNhapGioHang(maSP, soLuong, tenSP, 0);
+                                                Mess("Đã thêm " + soLuong + " sản phẩm " + tenSP + " vào giỏ hàng");
+                                            });
+
+                                            $("#btn_MuaNgay").click(function () {
+                                                var tenSP = $("#TenSP").text();
+                                                var maSP = $("#MaSP").text();
+                                                var soLuong = $("#SoLuong").val();
+                                                $.ajax({
+                                                    url: '/Cart/ThemGioHang',
+                                                    type: 'POST',
+                                                    data: JSON.stringify({ 'MaSP': maSP, 'SoLuong': soLuong }),
+                                                    dataType: 'json',
+                                                    contentType: 'application/json; charset=utf-8',
+                                                    success: function (data) {
+                                                        if (data == "true") {
+                                                            window.location.replace("/Cart/GioHang");
+                                                        }
+                                                    },
+                                                    error: function () {
+                                                    }
+                                                });
+
+                                            });
+                                        </script>
+                                        <div class="button GanFull">
+                                            <p class="title">Để lại số điện thoại, chúng tôi sẽ tư vấn ngay sau từ 5 › 10 phút</p>
+                                            <div class="input">
+                                                <div class="input-group">
+                                                    <input class="form-control" type="text" placeholder="Nhập số điện thoại của bạn" id="SDTKhach" />
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-primary" type="button" id="callMeNow" style="max-width:110px"><i class="fa fa-phone"></i> Gọi ngay</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <script src="/Scripts/jquery-3.3.1.min.js"></script>
+                                        <script src="/Scripts/bootstrap.min.js"></script>
+
+                                        <script type="text/javascript">
+                                            $("#callMeNow").click(function () {
+                                                if ($("#SDTKhach").val().length <= 9)
+                                                    alert("Vui lòng nhập số điện thoại hợp lệ");
+                                                else {
+                                                    var modal = document.getElementById('modalCallMe');
+                                                    modal.style.display = "block";
+                                                }
+                                            });
+                                        </script>
+                                        </>
+                                    </div>
+                                </div>
+
+
+                                <div class="product-tabs panel-body">
+                                    <ul class="nav nav-tabs">
+                                        <li role="presentation">
+                                            <a data-toggle="tab" href="#"><b>Phản hồi của khách hàng : </b></a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div>
+                                            <article>
+                                                <div>
+                                                    <div class="fb-comments " xid="<?php the_ID(); ?>" data-href="http://localhost:4327/Products/ProductDetail_Partical?MaSP=1" data-width="100%" data-numposts="5"></div>
+                                                </div>
+                                            </article>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="product-tabs panel-body">
+                                    <ul class="nav nav-tabs">
+                                        <li role="presentation">
+                                            <a data-toggle="tab" href="#"><b>Mô tả : Mật ong nguy&#234;n chất 1</b></a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div>
+                                            <article>
+                                                <div id="ND">
+
+
+                                                    <p>
+                                                        <b>Mật ong</b>
+                                                        là một thứ nguyên liệu dễ kiếm và dễ sử dụng. Đồng thời, nó cũng có rất
+                                                        nhiều lợi ích đối với sức khỏe con người. Dưới đây là những lợi của mật
+                                                        ong đối với sức khỏe và các phương pháp để có thể tận dụng được triệt
+                                                        để lợi ích của mật ong:
+                                                    </p><p><b>1. Làm đẹp da</b></p><div><img src="http://sohanews.sohacdn.com/2018/2/10/photo-1-15182342543041378086659.jpg"></div><p>
+                                                        Mật
+                                                        ong là một chất chống oxy hoá tuyệt vời, giúp thanh lọc cơ thể, loại bỏ
+                                                        nhiều chất độc khác nhau. Ngoài ra, do tính kháng khuẩn mạnh mẽ nên nó
+                                                        sẽ giúp cải thiện đáng kể tình trạng da, giúp da tươi sáng, căng tràn
+                                                        sức sống và luôn khỏe mạnh.
+                                                    </p><p><b>2. Hỗ trợ giảm cân</b></p><p>
+                                                        Nếu
+                                                        đang trong chế độ giảm cân, bạn nên loại bỏ tất cả các loại đồ ngọt có
+                                                        đường, trừ mật ong. Vì lượng đường có trong mật ong chứa thành phần khác
+                                                        với chất tạo ngọt thường.
+                                                    </p><p>
+                                                        Ít ai biết rằng khoảng 70% lượng đường
+                                                        của mật ong là đường tự nhiên, và chưa tới 5% còn lại là loại đường
+                                                        giống với đường chúng ta vẫn ăn hằng ngày.
+                                                    </p><img src="http://sohanews.sohacdn.com/2018/2/10/photo-1-1518234255097789679822.jpg" />
+                                                    <p>
+                                                        Do
+                                                        đó, mật ong vẫn giải quyết được các nhu cầu thèm ngọt hàng ngày nhưng
+                                                        vẫn đảm bảo được lượng calo hấp thụ chỉ bằng 64% so với các loại nước
+                                                        ngọt có gas. Đồng thời còn giúp tăng cường sự trao đổi chất, điều này
+                                                        rất cần thiết cho việc giảm cân.
+                                                    </p>
+                                                    <p><b>3. Giảm cholesterol</b></p><p>
+                                                        Mật
+                                                        ong không có cholesterol. Ngược lại thành phần cấu tạo và vitamin của
+                                                        mật ong góp phần làm  giảm mức cholesterol. Tiêu thụ mật ong hàng ngày
+                                                        rất có lợi cho việc tăng các hợp chất chống oxy hoá trong cơ thể và có
+                                                        thể chống lại lượng cholesterol dư thừa.
+                                                    </p><img src="http://sohanews.sohacdn.com/2018/2/10/photo-2-15182342550991575497251-15182348641831341350506.png" />
+                                                    <p>
+                                                        Vitamin
+                                                        C, E và Pinocembrin là 2 chất chống oxy hóa tự nhiên tuyệt vời có trong
+                                                        mật ong. Những chất này có tác dụng rất tốt trong việc ngăn chặn và
+                                                        giảm nguy cơ mắc bệnh tim ở người.
+                                                    </p>
+                                                    <p>
+                                                        Các nghiên cứu đã cho thấy rằng
+                                                        các chất chống oxy hoá có trong mật ong có thể ngăn ngừa chứng hẹp động
+                                                        mạch gây suy tim, suy giảm trí nhớ, hoặc nhức đầu. Vì vậy, uống một ly
+                                                        nước với vài muỗng mật ong mỗi ngày sẽ là một biện pháp tốt để ngăn ngừa
+                                                        nguy cơ mắc các bệnh về tim mạch.
+                                                    </p><p><b>5. Cải thiện trí nhớ</b></p><p>
+                                                        Các
+                                                        nghiên cứu khác đã cho thấy khả năng chống lại stress của mật ong, khôi
+                                                        phục lại hệ thống phòng chống oxy hóa của tế bào, và kết quả là cải
+                                                        thiện trí nhớ . Ngoài ra, canxi chứa trong mật ong dễ dàng được não hấp
+                                                        thụ, đem lại lợi ích cho các quá trình hoạt động, chuyển hóa của não bộ.
+                                                    </p><p><b>6. Tăng chất lượng giấc ngủ</b></p><p>
+                                                        Đường
+                                                        chứa trong mật ong làm tăng lượng insulin trong máu, giúp giải phóng
+                                                        serotonin. Serotonin được chuyển hóa thành melatonin, một loại hooc-môn
+                                                        giúp thúc đẩy giấc ngủ ngon hơn.
+                                                    </p><img src="http://sohanews.sohacdn.com/2018/2/10/photo-4-15182342551031753229726.jpg" /><p>
+                                                        Mật
+                                                        ong là một chất khử trùng mạnh, do đó bạn nên ăn một thìa mật ong mỗi
+                                                        sáng khi dạ dày còn rỗng. Phương pháp đơn giản này sẽ giúp bạn ngăn ngừa
+                                                        được các bệnh khác nhau liên quan đến đường tiêu hóa. Bên cạnh đó, khi
+                                                        mật ong đi qua dạ dày, nó sẽ giúp tiêu diệt vi trùng và chữa lành các
+                                                        vết thương nhỏ trong niêm mạc.
+                                                    </p><p><b>8. Làm giảm căng thẳng, mệt mỏi, stress</b></p><p>
+                                                        Điều
+                                                        này nghe có vẻ kỳ quặc, nhưng thực tế đúng là vậy. Mật ong giúp làm dịu
+                                                        các dây thần kinh và giảm bớt mệt mỏi . Glucose chứa trong mật ong rất
+                                                        cần thiết cho hoạt động của các nơ-ron thần kinh. Nó được hấp thụ nhanh
+                                                        chóng vào trong máu, làm cho việc thư giãn và giảm các rối loạn tâm lý
+                                                        trở nên hiệu quả hơn.
+                                                    </p><p>
+                                                        Khi kết hợp với một loại thuốc tự nhiên khác
+                                                        có tính chất khử trùng và chữa bệnh mạnh mẽ như tỏi, sức mạnh của mật
+                                                        ong sẽ tăng lên gấp 10 lần. Hỗn hợp mật ong và tỏi sẽ giúp tăng cường hệ
+                                                        thống miễn dịch của cơ thể và giúp cơ thể luôn trong tình trạng khỏe
+                                                        mạnh.
+                                                    </p><p>Dưới đây là một số công thức kết hợp giữa mật ong và tỏi để có thể mang lại lợi ích tốt nhất.</p>
+                                                    <img src="http://sohanews.sohacdn.com/2018/2/10/photo-6-15182342551081594171965-15182348575251696427355.png" /><p>
+                                                        Tách
+                                                        các nhánh tỏi và loại bỏ lớp vỏ ngoài của chúng. Đặt chúng vào trong
+                                                        bình, rồi đổ mật ong lên. Bỏ bớt bong bóng nếu cần. Đậy nắp và đợi trong
+                                                        vài ngày. Uống 1 thìa hỗn hợp mỗi ngày khi dạ dày còn rỗng, bạn sẽ cảm
+                                                        thấy cơ thể tràn đầy sức sống và khỏe mạnh hơn bao giờ hết.
+                                                    </p>
+                                                    <div id="admzone480455"><div id="ads_zone480455"><div id="ads_zone480455_slot1"><div id="ads_zone480455_banner554187" class="banner0" style="display: none;"><div id="sspbid_3308"><iframe id="ads-place-3308" style="border: 0px none; margin: 0px; padding: 0px;" src="javascript:void(0)" width="0" height="0"></iframe></div></div></div> </div></div><p><b>Công thức 2:</b></p><p><b><i>Thành phần</i></b></p><p>- 4 nắm tay tỏi cắt nhỏ</p><p>- 1 củ hành tây cắt nhỏ</p><p>- 2 quả ớt đỏ cắt nhỏ</p><p>- 1 muỗng canh gừng xắt nhỏ</p><p>- 1 quả chanh</p><p>- 1 thìa cà phê dấm táo</p><p>- 1 bình 500ml.</p><p><b><i>Cách làm</i></b></p><p>
+                                                        Cho
+                                                        hành tây cắt nhỏ vào dưới cùng của bình. Sau đó thêm tỏi và ớt. Tiếp
+                                                        theo cho gừng xắt nhỏ và từ từ đổ nước chanh vào bình. Ở trên cùng, thêm
+                                                        một thìa cà phê dấm táo và đóng bình thật chặt. Để thừa một khoảng
+                                                        không gian để hỗn hợp có thể lên men. Cất giữ bình ở nơi tối, thoáng mát
+                                                        và sử dụng thường xuyên hoặc cho đến khi tất cả các triệu chứng của bạn
+                                                        đã biến mất.
+                                                    </p><p style="text-align: right;"><i>*Theo Life Advencer, Brightside</i></p>
+
+
+                                                </div>
+                                            </article>
+
+                                        </div>
+                                    </div>
+                                    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+                                    <script src="/Content/Readmore.js-master/readmore.js"></script>
+                                    <script type="text/javascript">
+                                        $("img").addClass("lazyload");
+                                        $("#ND").readmore({
+                                            speed: 700,
+                                            moreLink: '<a href="#" class="btn btn-primary">HIỂN THỊ THÊM</a>',
+                                            lessLink: '<a href="#"  class="btn btn-primary">HIỂN THỊ BỚT</a>',
+                                            collapsedHeight: 700,
+                                            heightMargin: 1,
+                                        });
+                                    </script>
+
+                                </div>
+                                <!--End-->
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="footer-content clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="footer-box col-md-3 col-sm-12 col-xs-12">
+                    <div class="item">
+                        <h3>
+                            <span>Về ch&#250;ng t&#244;i</span>
+                        </h3>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href='/gioi-thieu'>
+                                Giới thiệu
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href='/chinh-sach-bao-mat'>
+                                Ch&#237;nh s&#225;ch bảo mật
+                            </a>
+                        </li>
+                        <li>
+                            <a href='/lien-he'>
+                                Li&#234;n hệ
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://runtime.com/">
+                                Đối tác
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-box col-md-3 col-sm-12 col-xs-12">
+                    <div class="item">
+                        <h3>
+                            <span>Trợ gi&#250;p</span>
+                        </h3>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href='/huong-dan-mua-hang'>
+                                Hướng dẫn mua h&#224;ng
+                            </a>
+                        </li>
+                        <li>
+                            <a href='/huong-dan-thanh-toan'>
+                                Hướng dẫn thanh to&#225;n
+                            </a>
+                        </li>
+                        <li>
+                            <a href='/tai-khoan-giao-dich'>
+                                T&#224;i khoản giao dịch
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-box box-address col-md-3 col-sm-12 col-xs-12">
+                    <div class="item">
+                        <h3>
+                            <span>Thông tin công ty</span>
+                        </h3>
+                        <div class="box-address-content">
+                            <b>C&#244;ng ty TNHH T&#226;m Ph&#225;t</b>
+                            <p><i class="fa fa-map-marker"></i> Tổ 24, Đinh Ti&#234;n Ho&#224;ng, Thị Trấn Li&#234;n Nghĩa, Huyện Đức Trọng, Tỉnh L&#226;m Đồng, Li&#234;n Nghĩa, Đức Trọng, L&#226;m Đồng</p>
+                            <p>
+                                <i class="fa fa-envelope"></i>
+                                <a href="mailto:MatOngTamPhat@gmail.com">MatOngTamPhat@gmail.com</a>
+                            </p>
+                            <p>
+                                <i class="fa fa-phone"></i>
+                                Phone: 0166.835.1266
+                            </p>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-box box-social col-md-3 col-sm-12 col-xs-12">
+                    <div class="item">
+                        <h3>
+                            <span>Facebook</span>
+                        </h3>
+                        <div class="fb-like-box" data-href="https://www.facebook.com/matongtamphat" data-width="275"
+                             data-height="190" data-colorscheme="dark" data-show-faces="true" data-header="false"
+                             data-stream="false" data-show-border="false">
+                        </div>
+                        <div class="social-icon" style="margin-top:1%">
+                            <ul>
+                                <li><a href="https://www.facebook.com/matongtamphat" target="_blank"><i class="fab fa-google-plus"></i></a></li>
+                                <li><a href="https://www.facebook.com/matongtamphat" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+                                <li><a href="https://www.facebook.com/matongtamphat" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                                <li><a href="https://www.facebook.com/matongtamphat" target="_blank"><i class="fab fa-twitter-square"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="footer-box box-letter col-md-3 col-sm-12 col-xs-12 hide">
+                    <div class="item">
+                        <h3>
+                            Đăng ký nhận tin
+                        </h3>
+                        <div class="letter-title">
+                            <span>Hộp thư</span><i class="icon-title"></i>
+                        </div>
+                        <div class="letter-content">
+                            <div class="new-paper">
+                                <div class="input-box">
+                                    <input type="text" name="email" id="txtNewsletter" class="input-text form-control" value="" placeholder="Your Emain Address" />
+                                </div>
+                                <div class="button text-center">
+                                    <a class="btn btn-primary">Nhận tin</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<button onclick="topFunction()" id="button_Top" title="Lên đầu trang">
+    <img src="/Content/Images/Icons/arrowup.png" width="40" />
+</button>
+<script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () { scrollFunction() };
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("button_Top").style.display = "block";
+        } else {
+            document.getElementById("button_Top").style.display = "none";
+        }
+    }
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        var body = $("html, body");
+        body.stop().animate({ scrollTop: 0 }, 700, 'swing', function () {
+        });
+    }
+</script>
+<script src="/Content/Test/js/classie.js"></script>
+<script src="/Content/Test/js/notificationFx.js"></script>
+<script>
+    function Mess(string) {
+        // simulate loading (for demo purposes only)
+        setTimeout(function () {
+            // create the notification
+            var notification = new NotificationFx({
+                message: '<span class=""></span><p>' + string + '</p>',
+                layout: 'bar',
+                effect: 'slidetop',
+                type: 'warning', // notice, warning or error
+                onClose: function () {
+                }
+            });
+
+            // show the notification
+            notification.show();
+        }, 0);
+
+        // disable the button (for demo purposes only)
+        this.disabled = true;
+    };
+
+</script>
+<script>
+    window.addEventListener("load", function (event) {
+        console.log("LOAD!");
+        lazyload();
+    });
+</script>
+<script src="/Content/lazyload.js"></script>
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Your customer chat code -->
+<div class="fb-customerchat"
+     attribution=setup_tool
+     page_id="1527775034209461"
+     logged_in_greeting="Xin chào ! Tôi có thể giúp gì cho bạn ?"
+     logged_out_greeting="Xin chào ! Tôi có thể giúp gì cho bạn ?">
+</div>

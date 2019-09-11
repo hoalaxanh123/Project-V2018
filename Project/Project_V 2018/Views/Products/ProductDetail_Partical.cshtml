@@ -1,0 +1,319 @@
+﻿@using Project_V_2018.Models
+@model SanPham
+@{
+    Layout = null;
+    ViewBag.Title = "Mật ong tâm phát - " + Model.TenSP;
+}
+@*Dùng thẻ head riêng để tiện cho seo*@
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta charset="UTF-8" />
+    <meta content="Mật ong tâm phát" name="description" />
+    <meta content="" name="keywords" />
+    <link rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="vi_VN" property="og:locale" />
+    <meta content="website" property="og:type" />
+    <meta property="fb:admins" content="hoalaxanh123" />
+
+    @* Seo *@
+    <meta content="@Model.TenSP" property="og:title" />
+    <meta content="@Model.TenSP" property="og:description" />
+    <meta content="@Model.HinhAnh" property="og:image" />
+    <meta content="@Model.HinhAnh" property="og:url" />
+    <meta content="@Model.TenSP" property="og:site_name" />
+    <title>Mật ong tâm  phát - @Model.TenSP</title>
+    <meta content="@Model.TenSP" name="description" />
+    <meta content="@Model.TenSP" name="keywords" />
+
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <link href="~/Content/source/Scripts/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/source/App_Themes/Home/common.css" rel="stylesheet" />
+    <link href="~/Content/source/Scripts/App_Themes/Home/animate.css" rel="stylesheet" />
+    <script src="~/Content/source/Scripts/BootStrap/bootstrap.min.js"></script>
+
+    @* Theme of template *@
+    <script src="~/Content/source/Scripts/fix-height.js"></script>
+    <link href="~/Content/source/style.css" rel="stylesheet" />
+    <link href="~/Content/source/responsive.css" rel="stylesheet" />
+
+
+    @*Chen link tao icon cuc hay - https://fontawesome.com*@
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
+    @* Chèn những thứ tự làm *@
+    <link href="~/Content/MyCSS.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Content/JS/myJS.js"></script>
+    <link href="~/Content/StepByStep/StepByStep.css" rel="stylesheet" />
+
+    @* Thông báo *@
+    <link href="~/Content/ConfirmDialog/dist/jquery-confirm.min.css" rel="stylesheet" />
+    <link href="~/Content/ConfirmDialog/css/jquery-confirm.css" rel="stylesheet" />
+    <script src="~/Content/ConfirmDialog/js/jquery-confirm.js"></script>
+
+    @* Controller *@
+    <script src="~/Content/JS/Cart.js"></script>
+    <script src="/Content/JS/LogOut.js"></script>
+    <script src="~/Content/JS/Login_User.js"></script>
+
+    @* Loading bar top *@
+    <script src="~/Content/LoadingBarTop/jquery-loading-bar.js"></script>
+    <link href="~/Content/LoadingBarTop/loading-bar.css" rel="stylesheet" />
+
+</head>
+@Html.Action("Header_Partical", "Home")
+@Html.Action("SlideShow_Partical", "Home")
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="box-sale-policy">
+                    <h3><span>Chính sách bán hàng</span></h3>
+                    <div class="sale-policy-block">
+                        <ul>
+                            <li>Giao hàng TOÀN QUỐC</li>
+                            <li>Thanh toán khi nhận hàng</li>
+                            <li>Đổi trả trong <span>10 ngày</span></li>
+                            <li>Hoàn ngay tiền mặt</li>
+                            <li>Chất lượng đảm bảo</li>
+                            <li>Miễn phí vận chuyển:<span>Đơn hàng từ 5 món trở lên</span></li>
+                        </ul>
+                    </div>
+                    @* HDMH *@
+                    @Html.Action("BuyGuide_Partical", "Store")
+                </div>
+
+                <div class="box-product hidden-xs">
+                    <h3>
+                        <span>
+                            Sản phẩm Hot
+                        </span>
+                    </h3>
+                    @* Sản phẩm mới toanh *@
+                    <div class="box-product-block">
+                        @Html.Action("HostProducts_LeftMenu_Partical", "Products")
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="modal" id="modalCallMe" role="dialog" aria-labelledby="modalCallMeLabel">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <h2>Cám ơn Qúy Khách đã liên hệ đặt hàng</h2>
+                                <p>Shop sẽ gọi lại để tư vấn cho Quý khách hàng trong thời gian sớm nhất</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                    OK
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav nav-tabs">
+                    <li role="presentation">
+                        <a data-toggle="tab" href="#">Thông tin sản phẩm</a>
+                    </li>
+                </ul>
+
+                <div class="panel panel-default">
+                    <link href="~/Content/source/productCSS/smoothproducts.css" rel="stylesheet" />
+                    <script src="~/Content/source/productCSS/smoothproducts.js"></script>
+                    <div class="product-detail clearfix relative ">
+                        <span us-spinner="{radius:5, width:3, length: 3}"></span>
+                        <!--Begin-->
+                        <div class="product-block clearfix">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-12 product-image clearfix">
+                                    <div class="col-md-12" style="margin-top:4%">
+                                        <img src="@Model.HinhAnh" class="img-responsive img-thumbnail ">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12 clearfix">
+                                    <h2 class="panel-heading">Tên SP: <i id="TenSP" style="font-style:normal"> @Model.TenSP </i></h2>
+                                    <div class="panel-body">
+                                        <div class="price" ng-if="IsTrackingInventory==false||AllowPurchaseWhenSoldOut==true || (IsTrackingInventory&&AllowPurchaseWhenSoldOut==false&&Quantity>0)">
+                                            <div ng-if="IsPromotion==true">
+                                                <span class="price-new">@MyClass.ToVND(Model.GiaGiam.Value) VND</span>
+                                                <span class="price-old">@MyClass.ToVND(Model.Gia.Value) VND</span>
+                                            </div>
+                                            <span class="product-code">Mã SP: <i id="MaSP" style="font-style:normal">@Model.MaSP</i></span>
+                                        </div>
+                                        <div class="price">
+                                            <span class="product-code">Còn : <b style="color:red">@Model.TonKho sản phẩm</b></span>
+                                        </div>
+                                        <div class="des GanFull" ng-bind-html="Summary|unsafe">
+                                            @{
+                                                if (Model.Mota.Length >= 200)
+                                                {
+                                                    <div>@Html.Raw(Model.Mota.Substring(0, 200)) ... </div>
+                                                }
+
+                                                else
+                                                {
+                                                    <div>@Html.Raw(Model.Mota)</div>
+                                                }
+
+                                            }
+                                        </div>
+                                        <div class="quantity clearfix">
+                                            <label>Số lượng</label>
+                                            <div class="quantity-input">
+                                                <input type="number" value="1" class="text" id="SoLuong" style="margin-bottom:5px" max="100" min="0" />
+                                                <label id="TB" class="text-danger"></label>
+                                            </div>
+                                        </div>
+                                        <script type="text/javascript">
+                                            document.getElementById("SoLuong").addEventListener("keyup", function (event) {
+                                                event.preventDefault();
+                                                if (event.keyCode === 13) {
+                                                    document.getElementById("btn_ThemGioHang").click();
+                                                }
+                                            });
+                                            $("#SoLuong").on('input', function () {
+                                                if ($("#SoLuong").val() == "" || $("#SoLuong").val() <= 0 || $("#SoLuong").val() > 100) {
+                                                    $("#btn_ThemGioHang").addClass("btn-info disabled");
+                                                    $("#TB").text("Vui lòng nhập số lượng hợp lệ ( 1-100 )");
+                                                    $("#btn_MuaNgay").addClass("btn-info disabled");
+                                                }
+                                                else {
+                                                    $("#btn_ThemGioHang").removeClass("btn-info disabled");
+                                                    $("#btn_MuaNgay").removeClass("btn-info disabled");
+                                                    $("#TB").text("")
+                                                }
+
+                                            });
+                                        </script>
+                                        @{
+                                            if (Model.TonKho != 0)
+                                            {
+                                                <div class="button">
+                                                    <button class="btn btn-default" id="btn_ThemGioHang"><i class="fas fa-cart-plus"></i>Thêm giỏ hàng</button>
+                                                    <button href="#" class="btn btn-primary" id="btn_MuaNgay"><i class="fas fa-credit-card"></i>Mua ngay</button>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <h1 style="color:red">Tạm Hết hàng</h1>
+                                            }
+                                        }
+                                        <script type="text/javascript">
+                                        $("#btn_ThemGioHang").click(function () {
+                                            var tenSP = $("#TenSP").text();
+                                            var maSP = $("#MaSP").text();
+                                            var soLuong = $("#SoLuong").val();
+                                            if (soLuong < 0)
+                                                soLuong = 1;
+                                            CatNhapGioHang(maSP, soLuong, tenSP, 0);
+                                            Mess("Đã thêm " + soLuong + " sản phẩm " + tenSP + " vào giỏ hàng");
+                                        });
+
+                                        $("#btn_MuaNgay").click(function () {
+                                            var tenSP = $("#TenSP").text();
+                                            var maSP = $("#MaSP").text();
+                                            var soLuong = $("#SoLuong").val();
+                                             $.ajax({
+                                                    url: '@Url.Action("ThemGioHang", "Cart")',
+                                                    type: 'POST',
+                                                    data: JSON.stringify({ 'MaSP': maSP, 'SoLuong': soLuong }),
+                                                    dataType: 'json',
+                                                    contentType: 'application/json; charset=utf-8',
+                                                    success: function (data) {
+                                                        if (data == "true") {
+                                                            window.location.replace("/Cart/GioHang");
+                                                        }
+                                                    },
+                                                    error: function () {
+                                                    }
+                                                });
+                                        });
+                                        </script>
+                                        <div class="button GanFull">
+                                            <p class="title">Để lại số điện thoại, chúng tôi sẽ tư vấn ngay sau từ 5 › 10 phút</p>
+                                            <div class="input">
+                                                <div class="input-group">
+                                                    <input class="form-control" type="text" placeholder="Nhập số điện thoại của bạn" id="SDTKhach" />
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-primary" type="button" id="callMeNow" style="max-width:110px"><i class="fa fa-phone"></i> Gọi ngay</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <script type="text/javascript">
+                                            $("#callMeNow").click(function () {
+                                                if ($("#SDTKhach").val().length <= 9)
+                                                    alert("Vui lòng nhập số điện thoại hợp lệ");
+                                                else {
+                                                    $("#modalCallMe").modal();
+                                                }
+                                            });
+                                        </script>
+                                        </>
+                                    </div>
+                                </div>
+
+
+                                <div class="product-tabs panel-body">
+                                    <ul class="nav nav-tabs">
+                                        <li role="presentation">
+                                            <a data-toggle="tab" href="#"><b>Phản hồi của khách hàng : </b></a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div>
+                                            <article>
+                                                <div>
+                                                    <div class="fb-comments " xid="<?php the_ID(); ?>" data-href="@HttpContext.Current.Request.Url.AbsoluteUri" data-width="100%" data-numposts="5"></div>
+                                                </div>
+                                            </article>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="product-tabs panel-body">
+                                    <ul class="nav nav-tabs">
+                                        <li role="presentation">
+                                            <a data-toggle="tab" href="#"><b>Mô tả : @Model.TenSP</b></a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content" id="ND">
+                                        <div>
+                                            <article>
+                                                <div >
+                                                    @Html.Raw(Model.ChiTietSanPham)
+                                                </div>
+                                            </article>
+
+                                        </div>
+                                    </div>
+                                    <script src="~/Content/Readmore.js-master/jquery.show-more.js"></script>
+                                    <script type="text/javascript">
+                                        $('#ND').showMore({
+                                            minheight: 400,
+                                            animationspeed: 1000,
+                                            buttontxtmore: "Xem thêm",
+                                            buttontxtless: "Ẩn bớt",
+                                        });
+                                        $("#showmore-button-ND").addClass("btn btn-primary FullWidth")
+                                    </script>
+
+                                </div>
+                                <!--End-->
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Action("Footer_Partical", "Home")

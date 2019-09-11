@@ -1,0 +1,48 @@
+﻿@using Project_V_2018.Models
+@{
+    if (Model != null)
+    {
+        decimal Sum = 0;
+        int STT = 0;
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Sản phâm</th>
+                    <th>Đơn giá</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var item in Model)
+                    {
+                        STT++;
+                        var temp = item as ChiTietHoaDon;
+                        Sum+= @temp.ThanhTien;
+                            <tr>
+                                <td>@STT</td>
+                                <td>
+                                    <span>@temp.TenSanPham</span>
+                                    <p class="note"></p>
+                                </td>
+                                <td>@temp.GiaThanh.ToString("0,0", System.Globalization.CultureInfo.InvariantCulture) VND</td>
+                                <td>@temp.SoLuong</td>
+                                <td>@temp.ThanhTien.ToString("0,0", System.Globalization.CultureInfo.InvariantCulture) VND</td>
+                            </tr>
+
+                    }
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4" class="text-right label-payment"><b>Tổng thanh toán:</b></td>
+                    <td class="total-payment">@Sum.ToString("0,0", System.Globalization.CultureInfo.InvariantCulture) VND</td>
+                </tr>
+            </tfoot>
+
+        </table>
+    }
+}
+

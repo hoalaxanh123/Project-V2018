@@ -1,0 +1,216 @@
+﻿@using Project_V_2018.Models
+@model CuaHang
+<div class="footer">
+    <div class="footer-content clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="footer-box col-md-3 col-sm-12 col-xs-12">
+                    <div class="item">
+                        <h3>
+                            <span>Về ch&#250;ng t&#244;i</span>
+                        </h3>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href='@Url.Action("Introduce", "Home", new { })'>
+                                Giới thiệu
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href='@Url.Action("Security", "Home", new { })'>
+                                Ch&#237;nh s&#225;ch bảo mật
+                            </a>
+                        </li>
+                        <li>
+                            <a href='@Url.Action("Info_Partical", "Home", new { })'>
+                                Li&#234;n hệ
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://runtime.com/">
+                                Đối tác
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-box col-md-3 col-sm-12 col-xs-12">
+                    <div class="item">
+                        <h3>
+                            <span>Trợ gi&#250;p</span>
+                        </h3>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href='@Url.Action("HDMuaHang", "Home", new { })'>
+                                Hướng dẫn mua h&#224;ng
+                            </a>
+                        </li>
+                        <li>
+                            <a href='@Url.Action("HDThanhToan", "Home", new { })'>
+                                Hướng dẫn thanh to&#225;n
+                            </a>
+                        </li>
+                        <li>
+                            <a href='@Url.Action("TaiKhoanGiaoDich", "Home", new { })'>
+                                T&#224;i khoản giao dịch
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-box box-address col-md-3 col-sm-12 col-xs-12">
+                    <div class="item">
+                        <h3>
+                            <span>Thông tin công ty</span>
+                        </h3>
+                        <div class="box-address-content">
+                            <b>@Model.TenCuaHang</b>
+                            <p><i class="fa fa-map-marker"></i> @Model.DiaChi</p>
+                            <p>
+                                <i class="fa fa-envelope"></i>
+                                <a href="mailto:@Model.Email">@Model.Email</a>
+                            </p>
+                            <p>
+                                <i class="fa fa-phone"></i>
+                                Phone: @Model.SDT
+                            </p>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-box box-social col-md-3 col-sm-12 col-xs-12">
+                    <div class="item">
+                        <h3>
+                            <span>Facebook</span>
+                        </h3>
+                        <div class="fb-like-box" data-href="https://www.facebook.com/matongtamphat" data-width="275"
+                             data-height="190" data-colorscheme="dark" data-show-faces="true" data-header="false"
+                             data-stream="false" data-show-border="false">
+                        </div>
+                        <div class="social-icon" style="margin-top:1%">
+                            <ul>
+                                <li><a href="https://www.facebook.com/matongtamphat" target="_blank"><i class="fab fa-google-plus"></i></a></li>
+                                <li><a href="https://www.facebook.com/matongtamphat" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+                                <li><a href="https://www.facebook.com/matongtamphat" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                                <li><a href="https://www.facebook.com/matongtamphat" target="_blank"><i class="fab fa-twitter-square"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="footer-box box-letter col-md-3 col-sm-12 col-xs-12 hide">
+                    <div class="item">
+                        <h3>
+                            Đăng ký nhận tin
+                        </h3>
+                        <div class="letter-title">
+                            <span>Hộp thư</span><i class="icon-title"></i>
+                        </div>
+                        <div class="letter-content">
+                            <div class="new-paper">
+                                <div class="input-box">
+                                    <input type="text" name="email" id="txtNewsletter" class="input-text form-control" value="" placeholder="Your Emain Address" />
+                                </div>
+                                <div class="button text-center">
+                                    <a class="btn btn-primary">Nhận tin</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="ThanhThongBao"></div>
+<button onclick="topFunction()" id="button_Top" title="Lên đầu trang">
+    <img src="~/Content/Images/Icons/arrowup.png" width="40" />
+</button>
+<script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () { scrollFunction() };
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("button_Top").style.display = "block";
+        } else {
+            document.getElementById("button_Top").style.display = "none";
+        }
+    }
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        var body = $("html, body");
+        body.stop().animate({ scrollTop: 0 }, 700, 'swing', function () {
+        });
+    }
+</script>
+<link href="~/Content/ThongBao/jquery.toast.css" rel="stylesheet" />
+<script src="~/Content/ThongBao/jquery.toast.js"></script>
+<script>
+    function Mess(string) {
+        $.toast({
+            // custom message text
+            text: string,
+            // custom toast title
+            heading: 'Thông báo',
+            // show/hide transition effects.
+            // fade, slide or plain.
+            showHideTransition: 'fade',
+            // show a close icon
+            allowToastClose: true,
+            // auto hide after a timeout
+            hideAfter: 3000,
+            // loader
+            loader: true,
+            loaderBg: '#9EC600',
+            // stack length
+            stack: 3,
+            // bottom-left, bottom-right, bottom-center,
+            // top-left,top-right
+            // top-center, mid-center
+            // or an object representing the left, right, top, bottom values
+            position: 'bottom-left',
+            // background color
+            bgColor: '#444',
+            // custom text color
+            textColor: '#eee',
+            // custom text align
+            textAlign: 'left',
+            // custom icon
+            icon: false,
+            // callback functions.
+            beforeShow: function () {
+            },
+            afterShown: function () { },
+            beforeHide: function () { },
+            afterHidden: function () { },
+            onClick: function () { }
+        })
+    };
+
+</script>
+<script>
+    window.addEventListener("load", function (event) {
+        lazyload();
+    });
+</script>
+<script src="~/Content/lazyload.js"></script>
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Your customer chat code -->
+<div class="fb-customerchat"
+     attribution=setup_tool
+     page_id="1527775034209461"
+     logged_in_greeting="Xin chào ! Tôi có thể giúp gì cho bạn ?"
+     logged_out_greeting="Xin chào ! Tôi có thể giúp gì cho bạn ?">
+</div>

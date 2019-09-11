@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Project_VModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="LoaiHang">
+    <Key>
+      <PropertyRef Name="MaLoai" />
+    </Key>
+    <Property Name="MaLoai" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenLoai" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DaXoa" Type="Boolean" Nullable="false" />
+    <Property Name="HinhAnh" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NoiBat" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="SanPhams" Relationship="Self.FK_SanPham_LoaiHang" FromRole="LoaiHang" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="LogID" />
+    </Key>
+    <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ThoiGianTao" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NguoiTao" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NguoiDung">
+    <Key>
+      <PropertyRef Name="TenDangNhap" />
+    </Key>
+    <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MatKhau" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenThat" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GioiTinh" Type="Boolean" Nullable="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="SoDienThoai" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="NgaySinh" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DaXoa" Type="Boolean" Nullable="false" />
+    <Property Name="TrangThai" Type="Boolean" Nullable="false" />
+    <Property Name="PhanQuyen" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PhienDangNhaps" Relationship="Project_VModel.FK_PhienDangNhap_NguoiDung" FromRole="NguoiDung" ToRole="PhienDangNhap" />
+  </EntityType>
+  <EntityType Name="SanPham">
+    <Key>
+      <PropertyRef Name="MaSP" />
+    </Key>
+    <Property Name="MaSP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaLoai" Type="Int32" Nullable="false" />
+    <Property Name="TenSP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Gia" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="HinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HienThiTrangChu" Type="Boolean" Nullable="false" />
+    <Property Name="DaXoa" Type="Boolean" Nullable="false" />
+    <Property Name="TonKho" Type="Int32" Nullable="false" />
+    <Property Name="GiaGiam" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="BanChay" Type="Boolean" Nullable="false" />
+    <Property Name="Moi" Type="Boolean" Nullable="false" />
+    <Property Name="Hot" Type="Boolean" Nullable="false" />
+    <Property Name="KhuyenMai" Type="Boolean" Nullable="false" />
+    <Property Name="NgungBan" Type="Boolean" Nullable="false" />
+    <Property Name="ChiTietSanPham" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="LoaiHang" Relationship="Self.FK_SanPham_LoaiHang" FromRole="SanPham" ToRole="LoaiHang" />
+  </EntityType>
+  <Association Name="FK_SanPham_LoaiHang">
+    <End Role="LoaiHang" Type="Self.LoaiHang" Multiplicity="1" />
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiHang">
+        <PropertyRef Name="MaLoai" />
+      </Principal>
+      <Dependent Role="SanPham">
+        <PropertyRef Name="MaLoai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QuanLyBuonBan_Entities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="LoaiHangs" EntityType="Self.LoaiHang" />
+    <EntitySet Name="Logs" EntityType="Self.Log" />
+    <EntitySet Name="NguoiDungs" EntityType="Self.NguoiDung" />
+    <EntitySet Name="SanPhams" EntityType="Self.SanPham" />
+    <AssociationSet Name="FK_SanPham_LoaiHang" Association="Self.FK_SanPham_LoaiHang">
+      <End Role="LoaiHang" EntitySet="LoaiHangs" />
+      <End Role="SanPham" EntitySet="SanPhams" />
+    </AssociationSet>
+    <EntitySet Name="TaiKhoanNganHangs" EntityType="Project_VModel.TaiKhoanNganHang" />
+    <EntitySet Name="ChiTietHoaDons" EntityType="Project_VModel.ChiTietHoaDon" />
+    <EntitySet Name="HoaDons" EntityType="Project_VModel.HoaDon" />
+    <AssociationSet Name="FK_ChiTietHoaDon_HoaDon" Association="Project_VModel.FK_ChiTietHoaDon_HoaDon">
+      <End Role="HoaDon" EntitySet="HoaDons" />
+      <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDons" />
+    </AssociationSet>
+    <FunctionImport Name="Admin_DeleteOrders" />
+    <EntitySet Name="CuaHangs" EntityType="Project_VModel.CuaHang" />
+    <EntitySet Name="PhienDangNhaps" EntityType="Project_VModel.PhienDangNhap" />
+    <AssociationSet Name="FK_PhienDangNhap_NguoiDung" Association="Project_VModel.FK_PhienDangNhap_NguoiDung">
+      <End Role="NguoiDung" EntitySet="NguoiDungs" />
+      <End Role="PhienDangNhap" EntitySet="PhienDangNhaps" />
+    </AssociationSet>
+    <EntitySet Name="sysdiagrams" EntityType="Project_VModel.sysdiagram" />
+    <EntitySet Name="GioHangs" EntityType="Project_VModel.GioHang" />
+  </EntityContainer>
+  <EntityType Name="TaiKhoanNganHang">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NganHang" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ChuTaiKhoan" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SoTaiKhoan" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="ChiNhanh" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ChiTietHoaDon">
+    <Key>
+      <PropertyRef Name="MaCTHD" />
+    </Key>
+    <Property Name="MaCTHD" Type="Int32" Nullable="false" />
+    <Property Name="MaHD" Type="Int32" Nullable="false" />
+    <Property Name="TenSanPham" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SoLuong" Type="Int32" Nullable="false" />
+    <Property Name="GiaThanh" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="ThanhTien" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="DaXoa" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="HoaDon" Relationship="Project_VModel.FK_ChiTietHoaDon_HoaDon" FromRole="ChiTietHoaDon" ToRole="HoaDon" />
+  </EntityType>
+  <EntityType Name="HoaDon">
+    <Key>
+      <PropertyRef Name="MaHD" />
+    </Key>
+    <Property Name="MaHD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NgayTao" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TrangThai" Type="Int32" Nullable="false" />
+    <Property Name="DaXoa" Type="Boolean" Nullable="false" />
+    <Property Name="NguoiTao" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ChiTietHoaDons" Relationship="Project_VModel.FK_ChiTietHoaDon_HoaDon" FromRole="HoaDon" ToRole="ChiTietHoaDon" />
+    <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="PhuongThucThanhToan" Type="Int32" />
+    <Property Name="TongTien" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <Association Name="FK_ChiTietHoaDon_HoaDon">
+    <End Type="Project_VModel.HoaDon" Role="HoaDon" Multiplicity="1" />
+    <End Type="Project_VModel.ChiTietHoaDon" Role="ChiTietHoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HoaDon">
+        <PropertyRef Name="MaHD" />
+      </Principal>
+      <Dependent Role="ChiTietHoaDon">
+        <PropertyRef Name="MaHD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="CuaHang">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenCuaHang" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Facebook" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Gmail" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Twitter" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Youtube" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Website" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GooglePlus" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Logo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HotLine" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Fax" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LinkMap" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Zalo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Line" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Skype" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Twiter" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PhienDangNhap">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Token" Type="String" Nullable="false" MaxLength="550" FixedLength="false" Unicode="true" />
+    <Property Name="TenDangNhap" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="ThoiGian" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DiaChiIP" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="NguoiDung" Relationship="Project_VModel.FK_PhienDangNhap_NguoiDung" FromRole="PhienDangNhap" ToRole="NguoiDung" />
+  </EntityType>
+  <Association Name="FK_PhienDangNhap_NguoiDung">
+    <End Type="Project_VModel.NguoiDung" Role="NguoiDung" Multiplicity="1" />
+    <End Type="Project_VModel.PhienDangNhap" Role="PhienDangNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiDung">
+        <PropertyRef Name="TenDangNhap" />
+      </Principal>
+      <Dependent Role="PhienDangNhap">
+        <PropertyRef Name="TenDangNhap" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="GioHang">
+    <Key>
+      <PropertyRef Name="MaGioHang" />
+    </Key>
+    <Property Name="MaGioHang" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="maSanPham" Type="Int32" Nullable="false" />
+    <Property Name="tenSanPham" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HinhAnh" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DonGia" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="SoLuong" Type="Int32" Nullable="false" />
+    <Property Name="ThanhTien" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="TenDangNhap" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+  </EntityType>
+</Schema>

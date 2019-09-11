@@ -1,0 +1,27 @@
+﻿@using Project_V_2018.Models
+@model CuaHang
+<div class="buy-guide">
+    <h3>Hướng Dẫn Mua Hàng</h3>
+    <ul>
+        <li>
+            Mua hàng trực tiếp tại website này
+        </li>
+        <li>
+            Gọi điện thoại <strong>
+                @Model.SDT
+            </strong> để mua hàng
+        </li>
+        <li>
+            Mua tại Trung tâm CSKH:<br />
+            @Model.DiaChi.Replace(',','-')
+            <a href="https://www.google.com/maps?ll=11.724257,108.367599&z=12&t=m&hl=en-US&gl=US&mapclient=embed&cid=3302376672672041635" rel="nofollow" target="_blank">Xem Bản Đồ</a>
+        </li>
+        <li>
+            Mua sỉ/buôn xin gọi <strong>
+                @Model.SDT
+            </strong> để được
+            hỗ trợ.
+        </li>
+    </ul>
+</div>
+<!--End-->

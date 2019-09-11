@@ -1,0 +1,118 @@
+﻿@Html.Partial("~/Views/Home/Head.cshtml")
+@Html.Action("Header_Partical", "Home")
+@Html.Action("SlideShow_Partical", "Home")
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Menus").addClass("hidden");
+        $("#slideshow").addClass("hidden");
+    })
+</script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+@using Project_V_2018.Models
+@model CuaHang
+<div style="margin-top:2%"></div>
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 panel panel-default">
+
+                <!--Begin-->
+                <div class="contact-content clearfix">
+                    <h1 class="title panel-heading">
+                        <span>
+                            Thông tin liên hệ
+                        </span>
+                    </h1>
+                    <div class="contact-block clearfix panel-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <a href="/">
+                                    <img class="img-responsive" src=@Model.Logo />
+                                </a>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="contact-info">
+                                    <div class="docs"><b class="name">@Model.TenCuaHang</b></div>
+                                    <div class="docs">
+                                        <i class="fas fa-user"></i>
+                                        <b>Địa chỉ:</b> @Model.DiaChi
+                                    </div>
+                                    <div class="docs">
+                                        <i class="fa fa-phone"></i>
+                                        <b>Điện thoại:</b> @Model.SDT
+                                    </div>
+                                    <div class="docs">
+                                        <i class="fa fa-mobile"></i>
+                                        <b>Hotline</b> @Model.HotLine
+                                    </div>
+                                    <div class="docs">
+                                        <i class="fa fa-fax"></i>
+                                        <b>Fax:</b>  @Model.Fax
+                                    </div>
+                                    <div class="docs">
+                                        <i class="fa fa-envelope"></i>
+                                        @*<a href="mailto:{@Model.Gmail}">@Model.Gmail</a>*@
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <hr class="" />
+                        <h3 class="title">Gửi thông tin liên hệ</h3>
+                        <div class="description">
+                            Xin vui lòng điền các yêu cầu vào mẫu dưới đây và gửi cho chúng tôi. Chúng tôi
+                            sẽ trả lời bạn ngay sau khi nhận được. Xin chân thành cảm ơn!
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="contact-feedback">
+                                    <form ng-submit="sendContact()">
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="fas fa-user"></i></span>
+                                            <input type="text" placeholder="Họ tên" ng-model="Name" class="form-control" required />
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="fas fa-map-marker-alt"></i></span>
+                                            <input type="text" placeholder="Địa chỉ" ng-model="Address" class="form-control" />
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                            <input type="email" placeholder="Email" ng-model="Email" class="form-control" required />
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="fas fa-phone-square"></i></span>
+                                            <input type="text" placeholder="Điện thoại" ng-model="Phone" class="form-control" required />
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="fas fa-font"></i></span>
+                                            <input type="text" placeholder="Tiêu đề" ng-model="Title" class="form-control" required />
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea placeholder="Nội dung" class="form-control" rows="3" ng-model="Content" required></textarea>
+                                        </div>
+                                        <button class="btn btn-default" type="submit">Gửi</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="map clearfix">
+                                    <iframe class="col-md-12" src="@Model.LinkMap" frameborder="1" style="border:0" allowfullscreen width=100% height=320px></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-3">
+                    <script src="/app/services/moduleServices.js"></script>
+                    <script src="/app/controllers/moduleController.js"></script>
+                    <!--Begin-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Action("Footer_Partical", "Home");
+

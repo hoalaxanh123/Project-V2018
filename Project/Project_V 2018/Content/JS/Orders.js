@@ -1,0 +1,1 @@
+﻿function XacNhanDonHang(maDonHang) { $.ajax({ url: "/Order/XacNhanDonHang", type: "POST", data: { ID:maDonHang }, success: function (data) { window.location.reload(window.location) } }); }
